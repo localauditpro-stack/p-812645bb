@@ -1,0 +1,80 @@
+<svg viewBox="0 0 180 252" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="bg_maushold-sar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5D4037"/>
+      <stop offset="100%" stop-color="#4E342E"/>
+    </linearGradient>
+    <linearGradient id="shine_maushold-sar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="white" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="white" stop-opacity="0.0"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0.08"/>
+    </linearGradient>
+    <clipPath id="card_maushold-sar">
+      <rect width="180" height="252" rx="10"/>
+    </clipPath>
+    <filter id="glow_maushold-sar">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Card background -->
+  <g clip-path="url(#card_maushold-sar)">
+    <rect width="180" height="252" fill="url(#bg_maushold-sar)"/>
+    
+    <!-- Art area -->
+    <rect x="8" y="30" width="164" height="132" rx="4" fill="rgba(0,0,0,0.25)"/>
+    <!-- Maushold family cozy house -->
+    <rect x="8" y="30" width="164" height="132" fill="#3E2723" rx="4"/>
+    <rect x="8" y="120" width="164" height="42" rx="0 0 4 4" fill="#4E342E"/>
+    <!-- Small house -->
+    <rect x="55" y="80" width="70" height="50" rx="2" fill="#795548"/>
+    <polygon points="90,55 45,85 135,85" fill="#6D4C41"/>
+    <rect x="78" y="95" width="24" height="35" rx="1" fill="#5D4037"/>
+    <!-- Maus family (4 mice) -->
+    <!-- Papa -->
+    <circle cx="68" cy="112" r="7" fill="#D7CCC8"/>
+    <circle cx="68" cy="105" r="5" fill="#EFEBE9"/>
+    <!-- Mama -->
+    <circle cx="112" cy="112" r="7" fill="#D7CCC8"/>
+    <circle cx="112" cy="105" r="5" fill="#EFEBE9"/>
+    <!-- Baby 1 -->
+    <circle cx="82" cy="118" r="5" fill="#D7CCC8"/>
+    <circle cx="82" cy="113" r="4" fill="#EFEBE9"/>
+    <!-- Baby 2 -->
+    <circle cx="98" cy="118" r="5" fill="#D7CCC8"/>
+    <circle cx="98" cy="113" r="4" fill="#EFEBE9"/>
+    <!-- Shine overlay -->
+    <rect x="8" y="30" width="164" height="132" fill="url(#shine_maushold-sar)" rx="4"/>
+  </g>
+  
+  <!-- Card outer border -->
+  <rect x="2" y="2" width="176" height="248" rx="10" fill="none" stroke="#C8B560" stroke-width="2.5"/>
+  <rect x="5" y="5" width="170" height="242" rx="8" fill="none" stroke="#E8D584" stroke-width="0.8" opacity="0.6"/>
+  
+  <!-- Name bar top -->
+  <rect x="8" y="8" width="164" height="20" rx="3" fill="rgba(0,0,0,0.7)"/>
+  <text x="12" y="22" font-size="9.5" fill="white" font-family="'Arial',sans-serif" font-weight="bold">Maushold ex</text>
+  
+  <!-- Card number + rarity bottom right of art -->
+  <rect x="100" y="156" width="68" height="16" rx="2" fill="rgba(0,0,0,0.6)"/>
+  <text x="166" y="167" font-size="8.5" fill="#00BCD4" font-family="'Share Tech Mono',monospace" text-anchor="end" font-weight="bold">SAR SAR</text>
+  
+  <!-- Set name bottom left of art -->
+  <rect x="12" y="156" width="84" height="16" rx="2" fill="rgba(0,0,0,0.6)"/>
+  <text x="16" y="167" font-size="7.5" fill="#cccccc" font-family="'Arial',sans-serif">CN Main Set</text>
+  
+  <!-- Stats / text box area -->
+  <rect x="8" y="174" width="164" height="70" rx="3" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+  
+  <!-- CN text -->
+  <text x="16" y="188" font-size="9" fill="#aaaaaa" font-family="'Arial',sans-serif">简体中文 独家</text>
+  
+  <!-- Rarity pip row -->
+  <text x="90" y="234" font-size="9" fill="#00BCD4" text-anchor="middle" font-family="monospace" font-weight="bold">SAR</text>
+  <circle cx="152" cy="230" r="4" fill="#00BCD4" opacity="0.8"/>
+  <circle cx="158" cy="230" r="2.5" fill="#00BCD4" opacity="0.5"/>
+  <circle cx="162" cy="230" r="1.5" fill="#00BCD4" opacity="0.3"/>
+  
+  <!-- Illustrator line if applicable -->
+</svg>

@@ -1,0 +1,99 @@
+<svg viewBox="0 0 180 252" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="bg_pikachu-wcs2023" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A237E"/>
+      <stop offset="100%" stop-color="#B71C1C"/>
+    </linearGradient>
+    <linearGradient id="shine_pikachu-wcs2023" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="white" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="white" stop-opacity="0.0"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0.08"/>
+    </linearGradient>
+    <clipPath id="card_pikachu-wcs2023">
+      <rect width="180" height="252" rx="10"/>
+    </clipPath>
+    <filter id="glow_pikachu-wcs2023">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Card background -->
+  <g clip-path="url(#card_pikachu-wcs2023)">
+    <rect width="180" height="252" fill="url(#bg_pikachu-wcs2023)"/>
+    
+    <!-- Art area -->
+    <rect x="8" y="30" width="164" height="132" rx="4" fill="rgba(0,0,0,0.25)"/>
+    <!-- World Championships 2023 -->
+    <rect x="8" y="30" width="164" height="132" fill="#1A237E" rx="4"/>
+    <!-- Stage spotlight -->
+    <circle cx="90" cy="80" r="50" fill="#FFD700" opacity="0.12"/>
+    <!-- WCS globe/trophy -->
+    <circle cx="90" cy="85" r="30" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.5"/>
+    <ellipse cx="90" cy="85" rx="30" ry="12" fill="none" stroke="#FFD700" stroke-width="1" opacity="0.4"/>
+    <line x1="90" y1="55" x2="90" y2="115" stroke="#FFD700" stroke-width="1" opacity="0.4"/>
+    <!-- Trophy cup -->
+    <path d="M72,110 Q72,130 90,135 Q108,130 108,110 Z" fill="#FFD700" opacity="0.8"/>
+    <rect x="84" y="130" width="12" height="8" fill="#FFD700" opacity="0.8"/>
+    <rect x="78" y="136" width="24" height="4" rx="1" fill="#FFD700" opacity="0.8"/>
+    <!-- WCS logo star -->
+    <polygon points="90,68 93,77 103,77 95,83 98,92 90,87 82,92 85,83 77,77 87,77" fill="#FFD700"/>
+    <!-- CN flag hint -->
+    <rect x="140" y="40" width="22" height="15" fill="#DE2910"/>
+    <circle cx="144" cy="44" r="2" fill="#FFD700"/>
+    <!-- Pikachu -->
+    
+    <!-- Pikachu body -->
+    <ellipse cx="90" cy="160.5" rx="9.9" ry="7.700000000000001" fill="#FFD700"/>
+    <!-- head -->
+    <circle cx="90" cy="155" r="7.700000000000001" fill="#FFD700"/>
+    <!-- ears -->
+    <polygon points="85.6,148.4 82.3,140.7 88.9,147.3" fill="#FFD700"/>
+    <polygon points="94.4,148.4 97.7,140.7 91.1,147.3" fill="#FFD700"/>
+    <polygon points="85.6,147.3 83.4,141.8 87.8,146.2" fill="#1a1a1a"/>
+    <polygon points="94.4,147.3 96.6,141.8 92.2,146.2" fill="#1a1a1a"/>
+    <!-- cheeks -->
+    <circle cx="84.5" cy="157.2" r="2.2" fill="#FF6B6B" opacity="0.8"/>
+    <circle cx="95.5" cy="157.2" r="2.2" fill="#FF6B6B" opacity="0.8"/>
+    <!-- eyes -->
+    <circle cx="87.25" cy="153.9" r="1.375" fill="#1a1a1a"/>
+    <circle cx="92.75" cy="153.9" r="1.375" fill="#1a1a1a"/>
+    <!-- nose -->
+    <ellipse cx="90" cy="156.1" rx="0.8250000000000001" ry="0.55" fill="#1a1a1a"/>
+    <!-- tail lightning bolt -->
+    <polygon points="99.9,157.2 105.4,152.8 102.1,155 107.6,149.5 99.9,153.9 103.2,151.7" fill="#FFD700" stroke="#E6B800" stroke-width="0.5"/>
+    
+    <!-- Shine overlay -->
+    <rect x="8" y="30" width="164" height="132" fill="url(#shine_pikachu-wcs2023)" rx="4"/>
+  </g>
+  
+  <!-- Card outer border -->
+  <rect x="2" y="2" width="176" height="248" rx="10" fill="none" stroke="#C8B560" stroke-width="2.5"/>
+  <rect x="5" y="5" width="170" height="242" rx="8" fill="none" stroke="#E8D584" stroke-width="0.8" opacity="0.6"/>
+  
+  <!-- Name bar top -->
+  <rect x="8" y="8" width="164" height="20" rx="3" fill="rgba(0,0,0,0.7)"/>
+  <text x="12" y="22" font-size="9.5" fill="white" font-family="'Arial',sans-serif" font-weight="bold">Pikachu</text>
+  
+  <!-- Card number + rarity bottom right of art -->
+  <rect x="100" y="156" width="68" height="16" rx="2" fill="rgba(0,0,0,0.6)"/>
+  <text x="166" y="167" font-size="8.5" fill="#FF4081" font-family="'Share Tech Mono',monospace" text-anchor="end" font-weight="bold">040/SV-P PROMO</text>
+  
+  <!-- Set name bottom left of art -->
+  <rect x="12" y="156" width="84" height="16" rx="2" fill="rgba(0,0,0,0.6)"/>
+  <text x="16" y="167" font-size="7.5" fill="#cccccc" font-family="'Arial',sans-serif">WCS 2023</text>
+  
+  <!-- Stats / text box area -->
+  <rect x="8" y="174" width="164" height="70" rx="3" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+  
+  <!-- CN text -->
+  <text x="16" y="188" font-size="9" fill="#aaaaaa" font-family="'Arial',sans-serif">简体中文 独家</text>
+  
+  <!-- Rarity pip row -->
+  <text x="90" y="234" font-size="9" fill="#FF4081" text-anchor="middle" font-family="monospace" font-weight="bold">PROMO</text>
+  <circle cx="152" cy="230" r="4" fill="#FF4081" opacity="0.8"/>
+  <circle cx="158" cy="230" r="2.5" fill="#FF4081" opacity="0.5"/>
+  <circle cx="162" cy="230" r="1.5" fill="#FF4081" opacity="0.3"/>
+  
+  <!-- Illustrator line if applicable -->
+</svg>

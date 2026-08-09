@@ -1,0 +1,77 @@
+<svg viewBox="0 0 180 252" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="bg_rika-sar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#33691E"/>
+      <stop offset="100%" stop-color="#827717"/>
+    </linearGradient>
+    <linearGradient id="shine_rika-sar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="white" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="white" stop-opacity="0.0"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0.08"/>
+    </linearGradient>
+    <clipPath id="card_rika-sar">
+      <rect width="180" height="252" rx="10"/>
+    </clipPath>
+    <filter id="glow_rika-sar">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Card background -->
+  <g clip-path="url(#card_rika-sar)">
+    <rect width="180" height="252" fill="url(#bg_rika-sar)"/>
+    
+    <!-- Art area -->
+    <rect x="8" y="30" width="164" height="132" rx="4" fill="rgba(0,0,0,0.25)"/>
+    <!-- Rika trainer card -->
+    <rect x="8" y="30" width="164" height="132" fill="#1B5E20" rx="4"/>
+    <rect x="8" y="30" width="164" height="60" fill="#33691E" rx="4 4 0 0"/>
+    <!-- Ground -->
+    <ellipse cx="90" cy="162" rx="55" ry="12" fill="#1B5E20" opacity="0.6"/>
+    <!-- Rika figure -->
+    <rect x="72" y="80" width="36" height="52" rx="5" fill="#FF8F00"/>
+    <circle cx="90" cy="76" r="14" fill="#FFCCBC"/>
+    <!-- Hair -->
+    <ellipse cx="90" cy="66" rx="14" ry="8" fill="#8D6E63"/>
+    <!-- Eyes -->
+    <circle cx="85" cy="75" r="2.5" fill="#33691E"/>
+    <circle cx="95" cy="75" r="2.5" fill="#33691E"/>
+    <!-- Badge -->
+    <circle cx="90" cy="92" r="5" fill="#FFD700"/>
+    <!-- Text CN -->
+    <text x="90" y="148" font-size="10" fill="#FFF9C4" text-anchor="middle" font-family="serif" opacity="0.8">莉佳</text>
+    <!-- Shine overlay -->
+    <rect x="8" y="30" width="164" height="132" fill="url(#shine_rika-sar)" rx="4"/>
+  </g>
+  
+  <!-- Card outer border -->
+  <rect x="2" y="2" width="176" height="248" rx="10" fill="none" stroke="#C8B560" stroke-width="2.5"/>
+  <rect x="5" y="5" width="170" height="242" rx="8" fill="none" stroke="#E8D584" stroke-width="0.8" opacity="0.6"/>
+  
+  <!-- Name bar top -->
+  <rect x="8" y="8" width="164" height="20" rx="3" fill="rgba(0,0,0,0.7)"/>
+  <text x="12" y="22" font-size="9.5" fill="white" font-family="'Arial',sans-serif" font-weight="bold">Rika</text>
+  
+  <!-- Card number + rarity bottom right of art -->
+  <rect x="100" y="156" width="68" height="16" rx="2" fill="rgba(0,0,0,0.6)"/>
+  <text x="166" y="167" font-size="8.5" fill="#00BCD4" font-family="'Share Tech Mono',monospace" text-anchor="end" font-weight="bold">SAR SAR</text>
+  
+  <!-- Set name bottom left of art -->
+  <rect x="12" y="156" width="84" height="16" rx="2" fill="rgba(0,0,0,0.6)"/>
+  <text x="16" y="167" font-size="7.5" fill="#cccccc" font-family="'Arial',sans-serif">CN Main Set</text>
+  
+  <!-- Stats / text box area -->
+  <rect x="8" y="174" width="164" height="70" rx="3" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+  
+  <!-- CN text -->
+  <text x="16" y="188" font-size="9" fill="#aaaaaa" font-family="'Arial',sans-serif">简体中文 独家</text>
+  
+  <!-- Rarity pip row -->
+  <text x="90" y="234" font-size="9" fill="#00BCD4" text-anchor="middle" font-family="monospace" font-weight="bold">SAR</text>
+  <circle cx="152" cy="230" r="4" fill="#00BCD4" opacity="0.8"/>
+  <circle cx="158" cy="230" r="2.5" fill="#00BCD4" opacity="0.5"/>
+  <circle cx="162" cy="230" r="1.5" fill="#00BCD4" opacity="0.3"/>
+  
+  <!-- Illustrator line if applicable -->
+</svg>
