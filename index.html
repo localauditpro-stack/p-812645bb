@@ -1796,6 +1796,78 @@ function kitTab(t){
     <div id="li-timeline" style="margin-top:8px;"></div>
   </details>
 </section>
+
+  <div class="sec-hdr">
+    <div class="sec-num">// 01</div>
+    <div class="sec-title">CITY INTEL — CLICK A CITY</div>
+  </div>
+  <p style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;margin-bottom:14px;">▸ CLICK ANY ROW FOR FULL CITY INTEL</p>
+
+  <div class="phase-grid">
+    <div class="phase-hdr">
+      <div class="hcell">PH</div>
+      <div class="hcell">D / N</div>
+      <div class="hcell">LOCATION</div>
+      <div class="hcell">FOCUS</div>
+      <div class="hcell col-accom">STAY</div>
+    </div>
+
+    <div class="phase-row" onclick="openCity('beijing',event)">
+      <div class="cell cell-id">I</div>
+      <div class="cell cell-days" title="days / hotel nights">3 / 3</div>
+      <div class="cell"><div class="city-name">Beijing</div><div class="city-sub">Great Wall · Forbidden City · Aug 21–23</div><div class="click-hint">▸ TAP FOR FULL INTEL</div></div>
+      <div class="cell" style="font-size:12px;">Great Wall hike · imperial palaces · hutong nights</div>
+      <div class="cell col-accom"><div class="accom-txt">✅ UrCove by Hyatt<br>Forbidden City</div></div>
+    </div>
+
+    <div class="phase-row" onclick="openCity('xian',event)">
+      <div class="cell cell-id">II</div>
+      <div class="cell cell-days" title="days / hotel nights">2 / 2</div>
+      <div class="cell"><div class="city-name">Xi'an</div><div class="city-sub">Terracotta Warriors · City Wall · Aug 24–25</div><div class="click-hint">▸ TAP FOR FULL INTEL</div></div>
+      <div class="cell" style="font-size:12px;">Ancient warriors · Muslim Quarter · city wall cycling</div>
+      <div class="cell col-accom"><div class="accom-txt">✅ UrCove by Hyatt<br>Bell Tower</div></div>
+    </div>
+
+    <div class="phase-row" onclick="openCity('chengdu',event)">
+      <div class="cell cell-id">III</div>
+      <div class="cell cell-days" title="days / hotel nights">3 / 3</div>
+      <div class="cell"><div class="city-name">Chengdu</div><div class="city-sub">Cooking Class · Spicy Food Capital · Aug 26–28</div><div class="click-hint">▸ TAP FOR FULL INTEL</div></div>
+      <div class="cell" style="font-size:12px;">Cooking class · Sichuan cuisine · TCG · Jiuyanqiao</div>
+      <div class="cell col-accom"><div class="accom-txt">✅ Holiday Inn<br>Oriental Plaza</div></div>
+    </div>
+
+    <div class="phase-row" onclick="openCity('chongqing',event)">
+      <div class="cell cell-id">IV</div>
+      <div class="cell cell-days" title="days / hotel nights">3 / 3</div>
+      <div class="cell"><div class="city-name">Chongqing</div><div class="city-sub">Mountain City · Hotpot Capital · Aug 29–31</div><div class="click-hint">▸ TAP FOR FULL INTEL</div></div>
+      <div class="cell" style="font-size:12px;">Hotpot · Hongya Cave · mountain city skyline</div>
+      <div class="cell col-accom"><div class="accom-txt">✅ Mercure<br>Hongya Cave</div></div>
+    </div>
+
+    <div class="phase-row" onclick="openCity('zhangjiajie',event)">
+      <div class="cell cell-id">V</div>
+      <div class="cell cell-days" title="days / hotel nights">4 / 3</div>
+      <div class="cell"><div class="city-name">Zhangjiajie</div><div class="city-sub">"Avatar" Mountains · HSR In · Sep 1–4</div><div class="click-hint">▸ TAP FOR FULL INTEL</div></div>
+      <div class="cell" style="font-size:12px;">Avatar pillars · cable cars · vertical drama</div>
+      <div class="cell col-accom"><div class="accom-txt">✅ Pullman<br>Wulingyuan</div></div>
+    </div>
+
+    <div class="phase-row" onclick="openCity('shanghai',event)">
+      <div class="cell cell-id">VI</div>
+      <div class="cell cell-days" title="days / hotel nights">6 / 7</div>
+      <div class="cell"><div class="city-name">Shanghai</div><div class="city-sub">TCG Capital · Spa Reset · Sep 5–10 (in eve of Sep 4)</div><div class="click-hint">▸ TAP FOR FULL INTEL</div></div>
+      <div class="cell" style="font-size:12px;">TCG hunting · 24hr spa · big night out</div>
+      <div class="cell col-accom"><div class="accom-txt">✅ HUALUXE Twelve<br>at Hengshan 5★</div></div>
+    </div>
+
+    <div class="phase-row" onclick="openCity('hongkong',event)">
+      <div class="cell cell-id">VII</div>
+      <div class="cell cell-days" title="days / hotel nights">4 / 4</div>
+      <div class="cell"><div class="city-name">Hong Kong</div><div class="city-sub">Final Shopping · Exit Point · Sep 11–14</div><div class="click-hint">▸ TAP FOR FULL INTEL</div></div>
+      <div class="cell" style="font-size:12px;">TCG paradise · skyline · departure</div>
+      <div class="cell col-accom"><div class="accom-txt">✅ Hopewell Hotel<br>Wan Chai 5★</div></div>
+    </div>
+  </div>
 <script>
 (function(){
   var ITIN = [
@@ -2707,78 +2779,6 @@ function kitTab(t){
   })();
   </script>
 </section>
-
-  <div class="sec-hdr">
-    <div class="sec-num">// 01</div>
-    <div class="sec-title">CITY INTEL — CLICK A CITY</div>
-  </div>
-  <p style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;margin-bottom:14px;">▸ CLICK ANY ROW FOR FULL CITY INTEL</p>
-
-  <div class="phase-grid">
-    <div class="phase-hdr">
-      <div class="hcell">PH</div>
-      <div class="hcell">D / N</div>
-      <div class="hcell">LOCATION</div>
-      <div class="hcell">FOCUS</div>
-      <div class="hcell col-accom">STAY</div>
-    </div>
-
-    <div class="phase-row" onclick="openCity('beijing',event)">
-      <div class="cell cell-id">I</div>
-      <div class="cell cell-days" title="days / hotel nights">3 / 3</div>
-      <div class="cell"><div class="city-name">Beijing</div><div class="city-sub">Great Wall · Forbidden City · Aug 21–23</div><div class="click-hint">▸ TAP FOR FULL INTEL</div></div>
-      <div class="cell" style="font-size:12px;">Great Wall hike · imperial palaces · hutong nights</div>
-      <div class="cell col-accom"><div class="accom-txt">✅ UrCove by Hyatt<br>Forbidden City</div></div>
-    </div>
-
-    <div class="phase-row" onclick="openCity('xian',event)">
-      <div class="cell cell-id">II</div>
-      <div class="cell cell-days" title="days / hotel nights">2 / 2</div>
-      <div class="cell"><div class="city-name">Xi'an</div><div class="city-sub">Terracotta Warriors · City Wall · Aug 24–25</div><div class="click-hint">▸ TAP FOR FULL INTEL</div></div>
-      <div class="cell" style="font-size:12px;">Ancient warriors · Muslim Quarter · city wall cycling</div>
-      <div class="cell col-accom"><div class="accom-txt">✅ UrCove by Hyatt<br>Bell Tower</div></div>
-    </div>
-
-    <div class="phase-row" onclick="openCity('chengdu',event)">
-      <div class="cell cell-id">III</div>
-      <div class="cell cell-days" title="days / hotel nights">3 / 3</div>
-      <div class="cell"><div class="city-name">Chengdu</div><div class="city-sub">Cooking Class · Spicy Food Capital · Aug 26–28</div><div class="click-hint">▸ TAP FOR FULL INTEL</div></div>
-      <div class="cell" style="font-size:12px;">Cooking class · Sichuan cuisine · TCG · Jiuyanqiao</div>
-      <div class="cell col-accom"><div class="accom-txt">✅ Holiday Inn<br>Oriental Plaza</div></div>
-    </div>
-
-    <div class="phase-row" onclick="openCity('chongqing',event)">
-      <div class="cell cell-id">IV</div>
-      <div class="cell cell-days" title="days / hotel nights">3 / 3</div>
-      <div class="cell"><div class="city-name">Chongqing</div><div class="city-sub">Mountain City · Hotpot Capital · Aug 29–31</div><div class="click-hint">▸ TAP FOR FULL INTEL</div></div>
-      <div class="cell" style="font-size:12px;">Hotpot · Hongya Cave · mountain city skyline</div>
-      <div class="cell col-accom"><div class="accom-txt">✅ Mercure<br>Hongya Cave</div></div>
-    </div>
-
-    <div class="phase-row" onclick="openCity('zhangjiajie',event)">
-      <div class="cell cell-id">V</div>
-      <div class="cell cell-days" title="days / hotel nights">4 / 3</div>
-      <div class="cell"><div class="city-name">Zhangjiajie</div><div class="city-sub">"Avatar" Mountains · HSR In · Sep 1–4</div><div class="click-hint">▸ TAP FOR FULL INTEL</div></div>
-      <div class="cell" style="font-size:12px;">Avatar pillars · cable cars · vertical drama</div>
-      <div class="cell col-accom"><div class="accom-txt">✅ Pullman<br>Wulingyuan</div></div>
-    </div>
-
-    <div class="phase-row" onclick="openCity('shanghai',event)">
-      <div class="cell cell-id">VI</div>
-      <div class="cell cell-days" title="days / hotel nights">6 / 7</div>
-      <div class="cell"><div class="city-name">Shanghai</div><div class="city-sub">TCG Capital · Spa Reset · Sep 5–10 (in eve of Sep 4)</div><div class="click-hint">▸ TAP FOR FULL INTEL</div></div>
-      <div class="cell" style="font-size:12px;">TCG hunting · 24hr spa · big night out</div>
-      <div class="cell col-accom"><div class="accom-txt">✅ HUALUXE Twelve<br>at Hengshan 5★</div></div>
-    </div>
-
-    <div class="phase-row" onclick="openCity('hongkong',event)">
-      <div class="cell cell-id">VII</div>
-      <div class="cell cell-days" title="days / hotel nights">4 / 4</div>
-      <div class="cell"><div class="city-name">Hong Kong</div><div class="city-sub">Final Shopping · Exit Point · Sep 11–14</div><div class="click-hint">▸ TAP FOR FULL INTEL</div></div>
-      <div class="cell" style="font-size:12px;">TCG paradise · skyline · departure</div>
-      <div class="cell col-accom"><div class="accom-txt">✅ Hopewell Hotel<br>Wan Chai 5★</div></div>
-    </div>
-  </div>
 
   <div class="sec-hdr">
     <div class="sec-num">// 02</div>
