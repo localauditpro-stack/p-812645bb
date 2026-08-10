@@ -1031,11 +1031,13 @@ function kitTab(t){
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;border-bottom:1px solid #e2e8f0;padding-bottom:18px;">
       <div>
         <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:3px;margin-bottom:4px;">// CHINA TRIP 2026</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#1e293b;letter-spacing:3px;line-height:1;">🚄 TRANSPORT HUB</div>
-        <div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px;">5 FLIGHTS · 4 HSR TRAINS · ALL LEGS</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#1e293b;letter-spacing:3px;line-height:1;">🧭 LOGISTICS</div>
+        <div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px;">GETTING AROUND · WHEN IT GOES WRONG · LIVING · MONEY</div>
       </div>
       <button onclick="closeTransportOverlay()" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.25);color:#ef4444;font-family:'Share Tech Mono',monospace;font-size:13px;padding:10px 20px;cursor:pointer;letter-spacing:2px;">✕ CLOSE</button>
     </div>
+
+    <div id="tx-tabbar" style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;"></div>
 
     <!-- ROUTE MAP -->
     <div id="tx-map" style="width:100%;height:380px;border-radius:6px;border:1px solid var(--border);margin-bottom:20px;position:relative;z-index:1;"></div>
@@ -1798,30 +1800,30 @@ function kitTab(t){
 (function(){
   var ITIN = [
     {d:'2026-08-20',dow:'Thu',n:0,city:'Melbourne',title:'Departure night — CX178',blocks:[['17:00','Final pack + passports + printed copies + some CNY cash. ⚠ Power banks: CARRY-ON only, and the Australian ones stay home for the DOMESTIC legs — see packing list'],['20:00','LEAVE for Melbourne Airport <b>T2 (international)</b> — <span class="lk" data-x="tx-cx178">flight card</span>'],['20:45','Cathay counters OPEN — T2 Departures Level 1, <b>Zone C/D</b> (or self bag-drop). ⚠ Counters CLOSE 22:45 sharp (60 min before)'],['23:45','CX178 → Hong Kong overnight. Bags through-checked to Shanghai; HKG transfer is AIRSIDE T1 — no immigration, security re-screen only']]}, {d:'2026-08-21',dow:'Fri',n:1,city:'Beijing',title:'Two-flight arrival day',blocks:[['11:05','Land Shanghai Pudong (PVG) <b>T2</b> on CX316 — immigration, bags, customs'],['12:30','<b>T2 → T1</b> for the domestic leg: 500 m walkway (~10 min) or free shuttle (T2 exit 27 → T1 exit 8, every 10 min). Fresh check-in at T1 — bags are NOT through-checked. MU advises counters 60 min out; they close ~40–45 min before'],['16:25','MU5161: PVG <b>T1</b> → Beijing Capital <b>T2</b> — <span class="lk" data-x="tx-mu5161">flight card</span>. ⚠ This route ran 2.5h late on Aug 8 and was CANCELLED Aug 9 — if it dies, PVG–PEK is shuttle-frequency: rebook same-day at the MU counter, do not panic'],['18:25','Land Beijing <b>T2</b>. China Unicom SIM at arrivals (backup data + a +86 number — <span class="lk" data-x="tx-connectivity">connectivity card</span>), Alipay + WeChat setup'],['20:00','Taxi/Airport Express to <span class="lk" data-h="bj">UrCove Dongcheng</span>. Hutong dinner, early night. 📋 TONIGHT: check tomorrow’s Great Wall weather — the booked car FREE-CANCELS only until 7:00 AM tomorrow; heavy rain = cancel now and swap Day 2/Day 3']]},
-    {d:'2026-08-22',dow:'Sat',n:2,city:'Beijing',title:'Jinshanling Great Wall',wake:'6:15 AM',blocks:[['07:00','BOOKED car picks up at UrCove (GetYourGuide GYG•••••39VW — entry ×2 included, bring both passports; ~2.5h drive). Driver no-show? Call/WeChat +86 135 2206 9857. ⚠ Cable car ¥40 one-way + wall shuttle NOT included — carry CASH'],['09:30','THE WALK — Main Gate → East Gate, EASTWARD along the ridge (~7–8 km, 31 towers, 3.5–4 hrs). Long-lens portfolio shots. Done ~13:30'],['14:00','Meet the driver — car back to Beijing (~2.5h), at the hotel ~16:30'],['19:30','Houhai dinner → Great Leap #6 / Jing-A · Dada if it escalates — NO gym stop tonight, Larvitar moved to Day 3, 11:30. 💆 8 km of wall says feet first: 华夏良子, 金鱼胡同18号, open till 01:00 — <span class="lk" data-x="tx-massage">massage card</span>']]},
-    {d:'2026-08-23',dow:'Sun',n:3,city:'Beijing',title:'Imperial Beijing',wake:'5:45 AM',blocks:[['06:30','TEMPLE OF HEAVEN at park opening — leave the UrCove ~06:05: DiDi ~15 min (~¥20) or Line 5 from Dengshikou direct to Tiantan Dongmen (~20 min) — enter the EAST GATE, right at the metro exit. Taichi, sword dancing, jianzi circles; the grannies will wave you in. Park opens 06:00; the temple buildings open later and you are not staying for them'],['07:15','Taxi Tiantan → Meridian Gate (~4 km, ~15 min)'],['07:30','QUEUE at the Meridian Gate — opens 08:30, this hour is queue time. FC timed ticket books Sun Aug 16, 22:00 AEST (alarm set) — at the gate use the MANUAL ticket lane with physical passports; no same-day tickets exist. If the free Tiananmen Square reservation landed (same Aug 16 drop), walk the square first — it is the front yard of this queue'],['10:30','Jingshan Park rooftop shot'],['11:30','🃏 LARVITAR GYM — Zhongguancun Link Plaza B1 (<span class="lk" data-x="tx-metro-bj">Line 4</span>, ~30 min). Promo #1. Lunch at Zhongguancun'],['15:00','Open afternoon — drift back toward the Forbidden City end of town. (Temple of Heaven is done at dawn, not here: from Zhongguancun it was ~50 min out and another ~30 to the duck queue, which made the afternoon a sprint)'],['17:30','PEKING DUCK — Siji Minfu near FC, queue from ~5:30pm. Non-negotiable. Pack after']]},
-    {d:'2026-08-24',dow:'Mon',n:4,city:"Xi'an",title:'HSR + city wall + Defu Xiang',wake:'5:55 AM',blocks:[['06:40','LEAVE hotel for Beijing West (30–40 min; HSR wants 45–60 min for security + passport ID) — ✅ holding G351 07:55, 2nd class ×2, Trip.com ••••••••••••4604'],['07:55','HSR Beijing West → Xi’an North — ✅ BOOKED G351 07:55→12:05, 2nd class — <span class="lk" data-x="tx-hsr1">train card</span>. E-ticket rides on the passports; collection code E9W8846579 if a window or gate asks. Staffed manual lane if the reader balks'],['12:30','Arrive, drop bags at <span class="lk" data-h="xa">UrCove Bell Tower</span>'],['17:00','Cycle the city wall at sunset (South Gate, 13.7km)'],['19:30','Muslim Quarter night market dinner'],['21:30','Defu Xiang bar street — live music, ¥15-30 beers. 💆 Or trade it for legs: Xi’an is 郑远元’s home city, 200+ branches — Dianping 推拿, nearest, 4.5★+ (<span class="lk" data-x="tx-massage">massage card</span>)']]},
-    {d:'2026-08-25',dow:'Tue',n:5,city:"Xi'an",title:'Terracotta Warriors',blocks:[['08:00','To the Terracotta Warriors (~1h): Bus 306/游5 leaves from Xi’an RAILWAY STATION east square (taxi ~10 min from the Bell Tower first), or DiDi direct ~¥120–150. Timed slot 09:00–10:00 books Tue Aug 18 (alarm set) via bmy.com.cn / WeChat 秦始皇帝陵博物院 ONLY (no third-party sellers). Passport = ticket; normal hours 08:30–17:00 (summer extension ended Aug 21)'],['09:30','Pits 1-3 + exhibition hall, 3-4 hrs'],['15:30','🃏 REGIDRAGO GYM — SAGA Mall B2, Xiaozhai (<span class="lk" data-x="tx-metro-xa">Line 2</span>). Promo #2. ~2 km north of the pagoda, directly en route'],['17:00','Big Wild Goose Pagoda at golden hour'],['18:30','Datang Everbright City 大唐不夜城 — neon Tang boulevard, lights 6:30-11pm, free. THE Xi’an night spectacle'],['21:30','📋 TONIGHT (~7-day window opens): book TIANMEN MOUNTAIN for Tue Sep 1 — WeChat 张家界天门山, ~¥280 real-name. Take the 10:30 slot if holding G2373/G3869, the 11:30 if G2425']]},
-    {d:'2026-08-26',dow:'Wed',n:6,city:'Chengdu',title:'HSR + settle + open mic',wake:'6:45 AM',blocks:[['07:30','LEAVE hotel — <span class="lk" data-x="tx-metro-xa">Metro L2</span> to Xi’an North (~30 min) + 45 min security/ID buffer'],['08:50','HSR Xi’an North → Chengdu East — D1915 08:50→12:11 (3h21m) — <span class="lk" data-x="tx-hsr2">train card</span>; 09:04/09:16 run ~4h. ⚠ Ticket must say Xi’an NORTH'],['13:00','Check in <span class="lk" data-h="cd">Holiday Inn, Chunxi Rd</span>'],['16:00','Wide & Narrow Alleys — teahouse stop'],['18:30','Jinli Ancient Street — lanterns + dinner'],['21:30','Alley Tavern open-mic (Wednesday) — warm-up night']]},
-    {d:'2026-08-27',dow:'Thu',n:7,city:'Chengdu',title:'Cooking class + TCG',blocks:[['09:00','Sichuan cooking class — market-to-table. ⚠ NOT YET BOOKED as of Aug 10 — the hold: Viator \'Chengdu Cooking Class with a Local Market Visit\', 9:00 AM, ~A$259 for 2, pickup Holiday Inn, reserve-now-pay-later. If booked pre-trip: voucher is in Gmail'],['15:30','Spinda Gym, Joy City LG — TCG sourcing (Line 7 → Shuangqiao — NOT the Chunxi Rd mall)'],['18:30','People’s Park teahouse or Chunxi Rd wander'],['21:00','📋 TONIGHT (~window opens): buy the WULINGYUAN 4-day park pass for Sep 2–4 — ¥228, WeChat 张家界旅游小助手, real-name, timed entry by gate. Each day’s re-entry then re-books daily']]},
-    {d:'2026-08-28',dow:'Fri',n:8,city:'Chengdu',title:'Architecture + BIG NIGHT',wake:'6:15 AM',blocks:[['07:30','PANDA BASE at gates-open 07:30 — leave the Holiday Inn 06:50, DiDi ~35 min (~¥40). Entry books Fri Aug 14 when the 14-day window opens (alarm set; ¥55, official WeChat mini-program or Trip.com, real-name passports, manual lane at the gate). Pandas are active before ~09:30, then they sleep — out by 10'],['12:00','Luxe Lakes Eco-city — Siza/Nouvel buildings (~3 hrs, drop if legs demand)'],['16:30','💆 RECOVERY — 舒沐推拿馆, ¥148 for 60 min proper tuina, walkable at Chunxi/Yanshikou (<span class="lk" data-x="tx-massage">massage card</span>). ⚠ Fufu Tang is 浮浮汤温泉生活馆 in JINNIU district — a bathhouse, ~15–20 min DiDi, ~¥300+, NOT walkable and not a massage; keep it only if you want a pool afternoon'],['19:00','Pre-game dinner Jinli/Chunxi'],['21:30','🌌 BIG NIGHT — Beer Nest / Jah Bar warm-up → Jiuyanqiao strip → T² (East Lake) or 339 (GAP/FLAT). Chengdu peaks 1–2am and clubs close ~2, so start early. Metro long closed — <span class="lk" data-x="tx-didi">DiDi</span> back']]},
-    {d:'2026-08-29',dow:'Sat',n:9,city:'Chongqing',title:'Arrive + Jiujie Saturday',wake:'7:00 AM',blocks:[['08:20','LEAVE hotel — taxi or <span class="lk" data-x="tx-metro-cd">Metro L2</span> to Chengdu East (~20 min) + security buffer'],['09:25','HSR Chengdu East → Shapingba 沙坪坝 — G8609 09:25→10:27 (1h02m) — <span class="lk" data-x="tx-hsr3">train card</span>. Then <span class="lk" data-x="tx-metro-cq">Metro Line 1</span> → Xiaoshizi, ~20 min'],['12:00','Check in <span class="lk" data-h="cq">Mercure Hongya Cave</span> (noon check-in works!). Proper hotpot lunch'],['14:30','Liziba station shot + Jiefangbei wander'],['19:30','Hongya Cave at blue hour — THE shot (sunset ~19:20 in late Aug; blue hour runs 19:40–20:00)'],['21:30','Jiujie: Helen’s → Space Club / NUTS (PASSPORTS at the door). Metro dies ~22:30 — <span class="lk" data-x="tx-didi">DiDi</span> back']]},
-    {d:'2026-08-30',dow:'Sun',n:10,city:'Chongqing',title:'Mountain city day',blocks:[['10:30','Sleep in, brunch'],['12:30','Yangtze River Cableway — the north station is ~1 km from the hotel, ~12-min walk'],['14:00','Shancheng Alley trail + Eling Park (no gym today — Fletchinder moved to Day 11 opening)'],['18:00','The Roof at Niccolo — sunset skyline'],['20:30','Nanbin Rd riverside bar (chill — prices are touristy, one drink)']]},
-    {d:'2026-08-31',dow:'Mon',n:11,city:'Chongqing',title:'Flex + prep',blocks:[['10:00','🃏 FLETCHINDER GYM at opening — Longfor Times Paradise Walk A, UG, DAPING. L1 from Xiaoshizi direct to Daping ~20 min — leave ~09:30. Promo #4. NOT Raffles City'],['12:30','Flex: Ciqikou Ancient Town, Ring Garden City, or hotpot round 2'],['15:00','💆 Recovery — 大辰足道, 八一路183号, ¥138–215, ~10–15 min walk via Jiefangbei (<span class="lk" data-x="tx-massage">massage card</span>)'],['19:00','Quiet dinner, pack'],['21:30','Early night — leave 05:50 tomorrow for Chongqing EAST (G2373 07:00 / G3869 07:12 / G2425 07:17, per the ticket you hold). 📋 PRE-BOOK the 05:50 DiDi in-app NOW — metro cannot make this train']]},
+    {d:'2026-08-22',dow:'Sat',n:2,city:'Beijing',title:'Jinshanling Great Wall',wake:'6:15 AM',blocks:[['07:00','BOOKED car picks up at UrCove (GetYourGuide GYG•••••39VW — entry ×2 included, bring both passports; ~2.5h drive). Driver no-show? Call/WeChat +86 135 2206 9857. ⚠ Cable car ¥40 one-way + wall shuttle NOT included — carry CASH'],['09:30','THE WALK — Main Gate → East Gate, EASTWARD along the ridge (~7–8 km, 31 towers, 3.5–4 hrs). Long-lens portfolio shots. Done ~13:30'],['14:00','Meet the driver — car back to Beijing (~2.5h), at the hotel ~16:30'],['19:30','Houhai dinner → Great Leap #6 / Jing-A · Dada if it escalates (<span class="lk" data-c="beijing:nightlife">Beijing nightlife</span>) — NO gym stop tonight, Larvitar moved to Day 3, 11:30. 💆 8 km of wall says feet first: 华夏良子, 金鱼胡同18号, open till 01:00 — <span class="lk" data-x="tx-massage">massage card</span>']]},
+    {d:'2026-08-23',dow:'Sun',n:3,city:'Beijing',title:'Imperial Beijing',wake:'5:45 AM',blocks:[['06:30','TEMPLE OF HEAVEN at park opening — leave the UrCove ~06:05: DiDi ~15 min (~¥20) or Line 5 from Dengshikou direct to Tiantan Dongmen (~20 min) — enter the EAST GATE, right at the metro exit. Taichi, sword dancing, jianzi circles; the grannies will wave you in. Park opens 06:00; the temple buildings open later and you are not staying for them'],['07:15','Taxi Tiantan → Meridian Gate (~4 km, ~15 min)'],['07:30','QUEUE at the Meridian Gate — opens 08:30, this hour is queue time. FC timed ticket books Sun Aug 16, 22:00 AEST (alarm set) — at the gate use the MANUAL ticket lane with physical passports; no same-day tickets exist. If the free Tiananmen Square reservation landed (same Aug 16 drop), walk the square first — it is the front yard of this queue'],['10:30','Jingshan Park rooftop shot'],['11:30','🃏 LARVITAR GYM (<span class="lk" data-c="beijing:pokemon">all BJ gyms</span>) — Zhongguancun Link Plaza B1 (<span class="lk" data-x="tx-metro-bj">Line 4</span>, ~30 min). Promo #1. Lunch at Zhongguancun'],['15:00','Open afternoon — drift back toward the Forbidden City end of town. (Temple of Heaven is done at dawn, not here: from Zhongguancun it was ~50 min out and another ~30 to the duck queue, which made the afternoon a sprint)'],['17:30','PEKING DUCK — Siji Minfu near FC, queue from ~5:30pm. Non-negotiable (<span class="lk" data-c="beijing:food">Beijing food</span>). Pack after']]},
+    {d:'2026-08-24',dow:'Mon',n:4,city:"Xi'an",title:'HSR + city wall + Defu Xiang',wake:'5:55 AM',blocks:[['06:40','LEAVE hotel for Beijing West (30–40 min; HSR wants 45–60 min for security + passport ID) — ✅ holding G351 07:55, 2nd class ×2, Trip.com ••••••••••••4604'],['07:55','HSR Beijing West → Xi’an North — ✅ BOOKED G351 07:55→12:05, 2nd class — <span class="lk" data-x="tx-hsr1">train card</span>. E-ticket rides on the passports; collection code E9W8846579 if a window or gate asks. Staffed manual lane if the reader balks'],['12:30','Arrive, drop bags at <span class="lk" data-h="xa">UrCove Bell Tower</span>'],['17:00','Cycle the city wall at sunset (South Gate, 13.7km)'],['19:30','Muslim Quarter night market dinner (<span class="lk" data-c="xian:food">Xi’an food</span>)'],['21:30','Defu Xiang bar street (<span class="lk" data-c="xian:nightlife">Xi’an nightlife</span>) — live music, ¥15-30 beers. 💆 Or trade it for legs: Xi’an is 郑远元’s home city, 200+ branches — Dianping 推拿, nearest, 4.5★+ (<span class="lk" data-x="tx-massage">massage card</span>)']]},
+    {d:'2026-08-25',dow:'Tue',n:5,city:"Xi'an",title:'Terracotta Warriors',blocks:[['08:00','To the Terracotta Warriors (~1h): Bus 306/游5 leaves from Xi’an RAILWAY STATION east square (taxi ~10 min from the Bell Tower first), or DiDi direct ~¥120–150. Timed slot 09:00–10:00 books Tue Aug 18 (alarm set) via bmy.com.cn / WeChat 秦始皇帝陵博物院 ONLY (no third-party sellers). Passport = ticket; normal hours 08:30–17:00 (summer extension ended Aug 21)'],['09:30','Pits 1-3 + exhibition hall, 3-4 hrs'],['15:30','🃏 REGIDRAGO GYM (<span class="lk" data-c="xian:pokemon">Xi’an gyms</span>) — SAGA Mall B2, Xiaozhai (<span class="lk" data-x="tx-metro-xa">Line 2</span>). Promo #2. ~2 km north of the pagoda, directly en route'],['17:00','Big Wild Goose Pagoda at golden hour'],['18:30','Datang Everbright City 大唐不夜城 — neon Tang boulevard, lights 6:30-11pm, free. THE Xi’an night spectacle'],['21:30','📋 TONIGHT (~7-day window opens): book TIANMEN MOUNTAIN for Tue Sep 1 — WeChat 张家界天门山, ~¥280 real-name. Take the 10:30 slot if holding G2373/G3869, the 11:30 if G2425']]},
+    {d:'2026-08-26',dow:'Wed',n:6,city:'Chengdu',title:'HSR + settle + open mic',wake:'6:45 AM',blocks:[['07:30','LEAVE hotel — <span class="lk" data-x="tx-metro-xa">Metro L2</span> to Xi’an North (~30 min) + 45 min security/ID buffer'],['08:50','HSR Xi’an North → Chengdu East — D1915 08:50→12:11 (3h21m) — <span class="lk" data-x="tx-hsr2">train card</span>; 09:04/09:16 run ~4h. ⚠ Ticket must say Xi’an NORTH'],['13:00','Check in <span class="lk" data-h="cd">Holiday Inn, Chunxi Rd</span>'],['16:00','Wide & Narrow Alleys — teahouse stop'],['18:30','Jinli Ancient Street — lanterns + dinner (<span class="lk" data-c="chengdu:food">Chengdu food</span>)'],['21:30','Alley Tavern open-mic (Wednesday) — warm-up night']]},
+    {d:'2026-08-27',dow:'Thu',n:7,city:'Chengdu',title:'Cooking class + TCG',blocks:[['09:00','Sichuan cooking class — market-to-table. ⚠ NOT YET BOOKED as of Aug 10 — the hold: Viator \'Chengdu Cooking Class with a Local Market Visit\', 9:00 AM, ~A$259 for 2, pickup Holiday Inn, reserve-now-pay-later. If booked pre-trip: voucher is in Gmail'],['15:30','Spinda Gym (<span class="lk" data-c="chengdu:pokemon">Chengdu gyms</span>), Joy City LG — TCG sourcing (Line 7 → Shuangqiao — NOT the Chunxi Rd mall)'],['18:30','People’s Park teahouse or Chunxi Rd wander'],['21:00','📋 TONIGHT (~window opens): buy the WULINGYUAN 4-day park pass for Sep 2–4 — ¥228, WeChat 张家界旅游小助手, real-name, timed entry by gate. Each day’s re-entry then re-books daily']]},
+    {d:'2026-08-28',dow:'Fri',n:8,city:'Chengdu',title:'Architecture + BIG NIGHT',wake:'6:15 AM',blocks:[['07:30','PANDA BASE at gates-open 07:30 — leave the Holiday Inn 06:50, DiDi ~35 min (~¥40). Entry books Fri Aug 14 when the 14-day window opens (alarm set; ¥55, official WeChat mini-program or Trip.com, real-name passports, manual lane at the gate). Pandas are active before ~09:30, then they sleep — out by 10'],['14:30','Luxe Lakes Eco-city (<span class="lk" data-c="chengdu:arch">Chengdu architecture</span>) — Siza/Nouvel buildings (~3 hrs) ONLY if legs and heat allow. ⚠ Late afternoon, NEVER midday — late Aug is 34°C+; an air-conditioned IFS/Taikoo Li midday is the alternative. Drops first if the massage matters more'],['16:30','💆 RECOVERY — 舒沐推拿馆, ¥148 for 60 min proper tuina, walkable at Chunxi/Yanshikou (<span class="lk" data-x="tx-massage">massage card</span>). ⚠ Fufu Tang is 浮浮汤温泉生活馆 in JINNIU district — a bathhouse, ~15–20 min DiDi, ~¥300+, NOT walkable and not a massage; keep it only if you want a pool afternoon'],['19:00','Pre-game dinner Jinli/Chunxi'],['21:30','🌌 BIG NIGHT (<span class="lk" data-c="chengdu:nightlife">Chengdu nightlife</span>) — Bar Mu (cocktails) → Jiuyanqiao strip → T² (East Lake) or 339 (GAP/FLAT). To meet people instead, warm up at Jah Bar / Beer Nest / Shamrock. Chengdu peaks 1–2am and clubs close ~2, so start early. Metro long closed — <span class="lk" data-x="tx-didi">DiDi</span> back']]},
+    {d:'2026-08-29',dow:'Sat',n:9,city:'Chongqing',title:'Arrive + Jiujie Saturday',wake:'7:00 AM',blocks:[['08:20','LEAVE hotel — taxi or <span class="lk" data-x="tx-metro-cd">Metro L2</span> to Chengdu East (~20 min) + security buffer'],['09:25','HSR Chengdu East → Shapingba 沙坪坝 — G8609 09:25→10:27 (1h02m) — <span class="lk" data-x="tx-hsr3">train card</span>. Then <span class="lk" data-x="tx-metro-cq">Metro Line 1</span> → Xiaoshizi, ~20 min'],['12:00','Check in <span class="lk" data-h="cq">Mercure Hongya Cave</span> (noon check-in works!). Proper hotpot lunch (<span class="lk" data-c="chongqing:food">Chongqing food</span>)'],['14:30','Liziba station shot + Jiefangbei wander'],['19:30','Hongya Cave at blue hour — THE shot (sunset ~19:20 in late Aug; blue hour runs 19:40–20:00)'],['21:30','Jiujie (<span class="lk" data-c="chongqing:nightlife">Chongqing nightlife</span>): Helen’s → Space Club / NUTS (PASSPORTS at the door). Metro dies ~22:30 — <span class="lk" data-x="tx-didi">DiDi</span> back']]},
+    {d:'2026-08-30',dow:'Sun',n:10,city:'Chongqing',title:'Mountain city day',blocks:[['10:30','Sleep in, brunch'],['12:30','Yangtze River Cableway — the north station is ~1 km from the hotel, ~12-min walk'],['14:30','Shancheng Alley trail + Eling Park (no gym today — Fletchinder moved to Day 11 opening)'],['18:00','The Roof at Niccolo — sunset skyline (<span class="lk" data-c="chongqing:arch">Chongqing architecture</span>)'],['20:30','Nanbin Rd riverside bar (chill — prices are touristy, one drink)']]},
+    {d:'2026-08-31',dow:'Mon',n:11,city:'Chongqing',title:'Flex + prep',blocks:[['10:00','🃏 FLETCHINDER GYM (<span class="lk" data-c="chongqing:pokemon">Chongqing gyms</span>) at opening — Longfor Times Paradise Walk A, UG, DAPING. L1 from Xiaoshizi direct to Daping ~20 min — leave ~09:30. Promo #4. NOT Raffles City'],['12:30','Flex: Ciqikou Ancient Town, Ring Garden City, or hotpot round 2'],['15:00','💆 Recovery — 大辰足道, 八一路183号, ¥138–215, ~10–15 min walk via Jiefangbei (<span class="lk" data-x="tx-massage">massage card</span>)'],['19:00','Quiet dinner, pack'],['21:30','Early night — leave 05:50 tomorrow for Chongqing EAST (G2373 07:00 / G3869 07:12 / G2425 07:17, per the ticket you hold). 📋 PRE-BOOK the 05:50 DiDi in-app NOW — metro cannot make this train']]},
     {d:'2026-09-01',dow:'Tue',n:12,city:'Zhangjiajie',title:'HSR in + Tianmen Mountain',wake:'5:15 AM',blocks:[['05:50','LEAVE hotel — PRE-BOOKED DiDi to Chongqing EAST (~35 min from Jiefangbei). ⚠ Chongqing EAST, NOT Chongqing North. 06:15 would miss G2373 and is knife-edge for the 07:1x trains'],['07:00','HSR Chongqing EAST → ZJJ West (~2.5h) — G2373 07:00→09:33 / G3869 07:12→09:41 / G2425 07:17→10:08 — <span class="lk" data-x="tx-hsr4">train card</span>'],['09:40','Arrive ZJJ West (~09:35–10:10 by train) — store luggage at the station'],['10:30','Tianmen Mountain — pre-booked timed slot, C-LINE (upper cable car closed since Nov 2025; budget 4.5–5.5h). Glass walkway, Heaven’s Gate (~¥280, real-name; ticket sales 07:30–16:00)'],['16:30','Taxi to Wulingyuan (~40 min), check in <span class="lk" data-h="zjj">Pullman</span>. TONIGHT: book tomorrow’s park entry — WeChat 张家界旅游小助手']]},
-    {d:'2026-09-02',dow:'Wed',n:13,city:'Zhangjiajie',title:'Avatar pillars (Yuanjiajie)',wake:'6:30 AM',blocks:[['07:00','Walk/taxi ~10 min from the Pullman to the WULINGYUAN (标志门) entrance — park eco-shuttles (included in the pass) run inside to the cable-car station. CABLE CAR up to Yuanjiajie (up-queues hit ~2h from 10:00; Bailong Elevator is the DOWN ride after 15:00, ~30 min). Separate tickets, ¥65–76 each'],['08:00','Yuanjiajie: Hallelujah Mountain, First Bridge — chase sea of clouds'],['14:00','Golden Whip Stream valley walk (7.5km)'],['19:00','Dinner in town, review photos. 📋 TONIGHT: re-book tomorrow’s park slot in the mini-program — the 4-day pass needs a fresh slot every day']]},
+    {d:'2026-09-02',dow:'Wed',n:13,city:'Zhangjiajie',title:'Avatar pillars (Yuanjiajie)',wake:'6:30 AM',blocks:[['07:00','Walk/taxi ~10 min from the Pullman to the WULINGYUAN (标志门) entrance — park eco-shuttles (included in the pass) run inside to the cable-car station. CABLE CAR up to Yuanjiajie (up-queues hit ~2h from 10:00; Bailong Elevator is the DOWN ride after 15:00, ~30 min). Separate tickets, ¥65–76 each'],['08:00','Yuanjiajie: Hallelujah Mountain, First Bridge — chase sea of clouds'],['14:00','Golden Whip Stream valley walk (7.5km) (<span class="lk" data-c="zhangjiajie:day">Zhangjiajie intel</span>)'],['19:00','Dinner in town, review photos. 📋 TONIGHT: re-book tomorrow’s park slot in the mini-program — the 4-day pass needs a fresh slot every day']]},
     {d:'2026-09-03',dow:'Thu',n:14,city:'Zhangjiajie',title:'Tianzi Mountain + backup',wake:'6:30 AM',blocks:[['07:00','Same Wulingyuan gate as yesterday (~10 min from the Pullman) → eco-shuttle to the Tianzishan cable-car station. Cable car up — Helong Park panoramas'],['11:00','Ten-Mile Gallery mini-train down'],['14:00','Weather backup: re-do Yuanjiajie if Day 13 fogged, else Baofeng Lake or the Grand Canyon glass bridge'],['19:00','Dinner, rest legs, pack. 💆 Three mountain days done — foot massage on 武陵路 (足来康, no.457) or just ask the Pullman desk to pick one (<span class="lk" data-x="tx-massage">massage card</span>)']]},
     {d:'2026-09-04',dow:'Fri',n:15,city:'→ Shanghai',title:'Fly to Shanghai + Bund',blocks:[['08:00','Check out of the Pullman'],['08:30','LEAVE WULINGYUAN — hard deadline (~40 min to ZJJ city; 10:30 is the absolute drop-dead ONLY if skipping 72SB)'],['09:15','72 Strange Buildings — ~1 hr, directly en route to the airport'],['10:45','Zhangjiajie Hehua (DYG) airport'],['13:15','FM7226: Zhangjiajie Hehua (DYG, single terminal) → Shanghai Pudong <b>T1</b> — <span class="lk" data-x="tx-fm7226">flight card</span>. 20 kg pp checked, weight-based, multiple pieces OK'],['15:10','Land <b>T1</b>. Check in <span class="lk" data-h="sh">HUALUXE Twelve at Hengshan</span> (¥1,000 deposit)'],['18:30','Bund at blue hour — first big-city skyline in 2 weeks']]},
-    {d:'2026-09-05',dow:'Sat',n:16,city:'Shanghai',title:'Bonus Saturday',blocks:[['10:30','Sleep in, FFC brunch'],['13:00','Tianzifang / M50 art district / TCG recon. 📋 If energy allows: get the tailor MEASUREMENT done TODAY (South Bund market, till 18:00) — buys the tailor a 5th day'],['18:30','Bund session round 2'],['22:30','🌌 BIG SHANGHAI CLUB NIGHT — Space Plus (Pudong — 12,000m², Shanghai’s largest) or TAXX (Found 158, Huangpu — 3,000m²). Confirm the night’s programming on SmartShanghai when you land. Home by <span class="lk" data-x="tx-didi">DiDi</span> — metro shuts ~23:00']]},
+    {d:'2026-09-05',dow:'Sat',n:16,city:'Shanghai',title:'Bonus Saturday',blocks:[['10:30','Sleep in, FFC brunch'],['13:00','Tianzifang / M50 art district / TCG recon. 📋 If energy allows: get the tailor MEASUREMENT done TODAY (South Bund market, till 18:00) — buys the tailor a 5th day'],['18:30','Bund session round 2'],['22:30','🌌 BIG SHANGHAI CLUB NIGHT (<span class="lk" data-c="shanghai:nightlife">Shanghai nightlife</span>) — Space Plus (Pudong — 12,000m², Shanghai’s largest) or TAXX (Found 158, Huangpu — 3,000m²). Confirm the night’s programming on SmartShanghai when you land. Home by <span class="lk" data-x="tx-didi">DiDi</span> — metro shuts ~23:00']]},
     {d:'2026-09-06',dow:'Sun',n:17,city:'Shanghai',title:'Slow city day',blocks:[['10:30','FFC lanes, brunch like a local'],['13:30','South Bund Fabric Market, 399 Lujiabang Rd (L4 Nanpu Bridge exit 3, open till 18:00) — get MEASURED. ~¥1,500–2,500 a suit + ¥150–300/shirt; walk a FULL loop before committing, itemised quote (start at KATE & KEVIN 1F or Wuyue Bespoke 2F). Fitting Tue, pickup Thu'],['15:30','East Nanjing Road wander'],['18:00','TALES rooftop sundowner (clubs dead Sundays). 📋 TODAY: pick Tuesday night’s 24-hour bathhouse — search Dianping 大众点评 for 上海全包式水疗 (all-inclusive), read this month’s reviews, screenshot the address in Chinese']]},
-    {d:'2026-09-07',dow:'Mon',n:18,city:'Shanghai',title:'TCG sourcing day',blocks:[['10:00','Cramorant Gym — Cloud Nine Mall 3F (<span class="lk" data-x="tx-metro-sh">metro</span>: Zhongshan Park)'],['14:00','Cetoddle Gym — Wujiaochang Wanda B1 (<span class="lk" data-x="tx-metro-sh">metro</span>: Line 10 only)'],['17:00','Order Taobao bubble wrap to hotel'],['19:00','Li Baixie 李百蟹 crab roe noodles (TikTok find) — RESERVE AHEAD for a Bund-window seat, ask the hotel concierge a day out'],['21:00','Speak Low → Flask (now Xiangyang Bei Lu) cocktail crawl']]},
-    {d:'2026-09-08',dow:'Tue',n:19,city:'Shanghai',title:'Architecture + spa check-in',blocks:[['09:00','1933 Old Millfun, Hongkou — DiDi ~25 min from the hotel (cheap at this hour); morning light on the concrete ramps'],['11:00','1000 Trees on Suzhou Creek — free (TikTok find)'],['13:30','Shanghai Tower deck + Raffles City'],['15:30','Tailor FITTING (South Bund) — try jacket, trousers AND one shirt; flag anything marginal NOW, Thursday is the only fix window left'],['16:30','Buy suitcase (Decathlon/Miniso ¥200-300) + packing materials'],['20:00','Check in to the 24-hour spa 🧖 — ⚠ VENUE NOT YET CHOSEN (pick it on Day 17). ⚠ It must be genuinely 24h: 水裹·汤泉生活 (龙湖虹桥天街 B1) runs 24/7 — 极乐汤 Gokurakuyu CLOSES 02:00 and would break this plan. All of them are 20–45 min DiDi out in Hongqiao/Pudong, NOT walkable from Hengshan Rd. Entry ¥500–900 with buffet + pod; massage is extra']]},
+    {d:'2026-09-07',dow:'Mon',n:18,city:'Shanghai',title:'TCG sourcing day',blocks:[['10:00','Cramorant Gym (<span class="lk" data-c="shanghai:pokemon">Shanghai gyms</span>) — Cloud Nine Mall 3F (<span class="lk" data-x="tx-metro-sh">metro</span>: Zhongshan Park)'],['14:00','Cetoddle Gym — Wujiaochang Wanda B1 (<span class="lk" data-x="tx-metro-sh">metro</span>: Line 10 only)'],['17:00','Order Taobao bubble wrap to hotel'],['19:00','Li Baixie 李百蟹 crab roe noodles (<span class="lk" data-c="shanghai:food">Shanghai food</span>) — RESERVE AHEAD for a Bund-window seat, ask the hotel concierge a day out'],['21:00','Speak Low → Flask (now Xiangyang Bei Lu) cocktail crawl']]},
+    {d:'2026-09-08',dow:'Tue',n:19,city:'Shanghai',title:'Architecture + spa check-in',blocks:[['09:00','1933 Old Millfun (<span class="lk" data-c="shanghai:arch">Shanghai architecture</span>), Hongkou — DiDi ~25 min from the hotel (cheap at this hour); morning light on the concrete ramps'],['11:00','1000 Trees on Suzhou Creek — free (TikTok find)'],['13:30','Shanghai Tower deck + Raffles City'],['15:30','Tailor FITTING (South Bund) — try jacket, trousers AND one shirt; flag anything marginal NOW, Thursday is the only fix window left'],['16:30','Buy suitcase (Decathlon/Miniso ¥200-300) + packing materials'],['20:00','Check in to the 24-hour spa 🧖 — ⚠ VENUE NOT YET CHOSEN (pick it on Day 17). ⚠ It must be genuinely 24h: 水裹·汤泉生活 (龙湖虹桥天街 B1) runs 24/7 — 极乐汤 Gokurakuyu CLOSES 02:00 and would break this plan. All of them are 20–45 min DiDi out in Hongqiao/Pudong, NOT walkable from Hengshan Rd. Entry ¥500–900 with buffet + pod; massage is extra']]},
     {d:'2026-09-09',dow:'Wed',n:20,city:'Shanghai',title:'SPA DAY — no alarm',blocks:[['—','Pools, saunas, buffet, sleeping pods. All day. 💰 Budget ¥700–1,400 pp: the all-inclusive entry with buffet + pod is ¥500–900, and <b>massage is ALWAYS charged separately</b> (¥200–450 for 60–90 min) at every tier — the ¥98–158 tickets are pools-and-sauna only, no food, no massage.'],['19:00','Back to hotel. Light night — big one tomorrow']]},
     {d:'2026-09-10',dow:'Thu',n:21,city:'Shanghai',title:'Pack cards + last dinner',blocks:[['10:00','Pack all TCG boxes — bubble wrap, weigh, split loads. 📋 DECIDE NOW: if the haul needs a 3rd bag on CX105, PREPAY the extra piece online (~USD135–150 — cheaper than airport; must be ≥24h before departure, hard deadline Sun night)'],['14:00','Flex: markets, last pickups. PICK UP THE SUITS — try EVERYTHING on at the stall before paying the balance'],['19:30','Last Shanghai dinner, then one Bund bar in the new tailored suits. Early night — HK flight tomorrow with the card suitcase']]},
     {d:'2026-09-11',dow:'Fri',n:22,city:'→ Hong Kong',title:'Fly to HK + Ozone nightcap',blocks:[['10:30','Sleep off last night. Brunch, pack — checkout is 12:00 (bags can wait with the concierge)'],['13:00','LEAVE for Shanghai Pudong <b>T2</b> — international check-in closes 60 MIN before (15:55). Counters around <b>B29–B34</b>'],['16:55','HX247: PVG <b>T2</b> → Hong Kong Intl <b>T1</b> (all HKG arrivals are T1) — <span class="lk" data-x="tx-hx247">flight card</span>'],['19:45','Land T1. Check in <span class="lk" data-h="hk">Hopewell Hotel, Wan Chai</span> (HK$1,000 deposit)'],['22:30','OZONE — 118F, Ritz-Carlton ICC, Kowloon (~20 min from Wan Chai, not 10). ✅ RESERVED 22:30, party of 2, indoor — SevenRooms #HKGKW-••••••••PZWT. ⚠ Table held only 15 MIN past 22:30 — if HX247 runs late, call +852 2263 2270 to hold it. Min spend HK$200 pp (redeemable on the menu). No shorts at this hour, no open-toe. If the day collapses, Day 24 sunset is the walk-in fallback']]},
-    {d:'2026-09-12',dow:'Sat',n:23,city:'Hong Kong',title:'JUNK BOAT + SoHo night',blocks:[['10:00','Junk boat party — ⚠ NOT YET BOOKED as of Aug 10: ticketed boats only list 2–4 wks out; watch alarms (Aug 19 / Aug 29 / Sep 5) will catch one and this block gets the pier + time then. If none landed: Sai Kung beach-and-seafood day instead (MTR Choi Hung C2 → minibus 1A) — tonight’s crawl is unchanged either way'],['17:30','Back, nap, recover'],['21:00','The Holywell’s → LKF Saturday peak → Cassio. MTR runs to ~00:30–01:00; after that it’s taxis (metered, honest) or N-route night buses']]},
-    {d:'2026-09-13',dow:'Sun',n:24,city:'Hong Kong',title:'Photography + In’s Point',blocks:[['08:00','Choi Hung Estate early (MTR Choi Hung C3/C4 → carpark ROOFTOP for the court — residents live here, be quick and quiet) → Mong Kok neon → Sham Shui Po — <span class="lk" data-x="tx-metro-hk">MTR card</span>'],['14:00','In’s Point card session (2–3 hrs, 530 Nathan Rd — <span class="lk" data-x="tx-metro-hk">MTR: Yau Ma Tei</span>) — then Collector’s Dream TCG at 17:15 (212 Nathan Rd, Jordan) on the walk south; closes ~8pm, verify Sunday hours'],['19:00','Ozone sunset drink — FALLBACK ONLY, if Friday’s booked nightcap did not happen. Sunday: same view, no DJ, no booking needed'],['20:00','Symphony of Lights, TST waterfront']]},
-    {d:'2026-09-14',dow:'Mon',n:25,city:'Hong Kong',title:'Cards + fly home tonight',blocks:[['08:00','OPTION: Dragon’s Back hike — Island line to Shau Kei Wan (exit A3) → bus 9 to To Tei Wan (~40 min door to trailhead). 90-min ridge walk ending at Big Wave Bay beach + swim. Fly home tanned'],['13:00','Sino Centre → HobbyX → Moonroad → Pokemon Hub (<span class="lk" data-x="tx-metro-hk">MTR: Mong Kok E2</span>)'],['15:30','💆 LAST ONE — Ten Feet Tall, 21/F The L. Place, 139 Queen’s Rd Central, +852 2971 1010. Deep tissue 50 min HK$510, open till 23:30 so it survives a late Dragon’s Back. Bags are already dropped at 16:00, so this can slide later (<span class="lk" data-x="tx-massage">massage card</span>)'],['16:00','Final pack + weigh → Airport Express IN-TOWN CHECK-IN at Hong Kong Station (CX desk 06:00–23:00; bags to 90 min before flight, hard last drop 22:50 — do it NOW in the afternoon) — drop ALL bags, evening is luggage-free. <span class="lk" data-x="tx-cx105">flight card</span>'],['22:00','Airport Express to HKG (24 min) — flight is 00:20 TONIGHT from <b>T1</b> (Cathay stayed at T1 through the 2026 T2 migration)']]},
+    {d:'2026-09-12',dow:'Sat',n:23,city:'Hong Kong',title:'JUNK BOAT + SoHo night',blocks:[['10:00','Junk boat party — ⚠ NOT YET BOOKED as of Aug 10: ticketed boats only list 2–4 wks out; watch alarms (Aug 19 / Aug 29 / Sep 5) will catch one and this block gets the pier + time then. If none landed: Sai Kung beach-and-seafood day instead (MTR Choi Hung C2 → minibus 1A) — tonight’s crawl is unchanged either way'],['17:30','Back, nap, recover'],['21:00','The Holywell’s → LKF Saturday peak → Cassio (<span class="lk" data-c="hongkong:nightlife">HK nightlife</span>). MTR runs to ~00:30–01:00; after that it’s taxis (metered, honest) or N-route night buses']]},
+    {d:'2026-09-13',dow:'Sun',n:24,city:'Hong Kong',title:'Photography + In’s Point',blocks:[['08:00','Choi Hung Estate early (MTR Choi Hung C3/C4 → carpark ROOFTOP for the court — residents live here, be quick and quiet) → Mong Kok neon → Sham Shui Po — <span class="lk" data-x="tx-metro-hk">MTR card</span>'],['14:00','In’s Point card session (<span class="lk" data-c="hongkong:pokemon">all HK card shops</span>) (2–3 hrs, 530 Nathan Rd — <span class="lk" data-x="tx-metro-hk">MTR: Yau Ma Tei</span>) — then Collector’s Dream TCG at 17:15 (212 Nathan Rd, Jordan) on the walk south; closes ~8pm, verify Sunday hours'],['19:00','Ozone sunset drink — FALLBACK ONLY, if Friday’s booked nightcap did not happen. Sunday: same view, no DJ, no booking needed'],['20:00','Symphony of Lights, TST waterfront']]},
+    {d:'2026-09-14',dow:'Mon',n:25,city:'Hong Kong',title:'Cards + fly home tonight',blocks:[['08:00','OPTION: Dragon’s Back hike — Island line to Shau Kei Wan (exit A3) → bus 9 to To Tei Wan (~40 min door to trailhead). 90-min ridge walk ending at Big Wave Bay beach + swim. Fly home tanned'],['13:00','Sino Centre (582–592 Nathan Rd) → HobbyX (608 Nathan Rd) → Moonroad — all walkable off <span class="lk" data-x="tx-metro-hk">MTR Mong Kok E2</span>, open ~1pm. ⚠ Pokémon Hub is NOT in Mong Kok — it is K11 Art Mall, TST, a separate leg south'],['15:30','💆 LAST ONE — Ten Feet Tall, 21/F The L. Place, 139 Queen’s Rd Central, +852 2971 1010. Deep tissue 50 min HK$510, open till 23:30 so it survives a late Dragon’s Back. Bags are already dropped at 16:00, so this can slide later (<span class="lk" data-x="tx-massage">massage card</span>)'],['16:00','Final pack + weigh → Airport Express IN-TOWN CHECK-IN at Hong Kong Station (CX desk 06:00–23:00; bags to 90 min before flight, hard last drop 22:50 — do it NOW in the afternoon) — drop ALL bags, evening is luggage-free. <span class="lk" data-x="tx-cx105">flight card</span>'],['22:00','Airport Express to HKG (24 min) — flight is 00:20 TONIGHT from <b>T1</b> (Cathay stayed at T1 through the 2026 T2 migration)']]},
     {d:'2026-09-15',dow:'Tue',n:26,city:'→ Melbourne',title:'Fly home',blocks:[['00:20','CX105: Hong Kong <b>T1</b> → Melbourne (MEL)'],['11:15','Land Melbourne. Trip complete 🏁']]}
   ];
   var DEADLINES = [
@@ -4701,7 +4703,7 @@ const CITIES = {
 <div class="day-item"><span class="time">4:25 PM</span>✈️ <strong>MU5161 PVG → Beijing Capital (PEK)</strong>, lands 6:25 PM.</div>
 <div class="day-item"><span class="time">6:45 PM</span>China Unicom SIM at PEK arrivals (passport + face scan, ~10 min). Buy a <strong>3C/CCC power bank</strong> here if not done at PVG — Australian ones are confiscated on domestic flights.</div>
 <div class="day-item"><span class="time">8:00 PM</span>Taxi / Airport Express to UrCove Forbidden City, Dongcheng. The hotel handles police registration.</div>
-<div class="day-item"><span class="time">EVENING</span>Casual hutong dinner, early night — it has been a two-flight day. (Tiananmen Square needs a FREE advance reservation — see the Day 3 note; the view from the surrounding streets needs nothing.)</div>
+<div class="day-item"><span class="time">EVENING</span>Casual hutong dinner, early night — it has been a two-flight day. 📋 <strong>TONIGHT: check tomorrow’s Jinshanling weather.</strong> The booked car <strong>free-cancels only until 7:00 AM tomorrow</strong> — heavy rain means cancelling tonight and swapping Day 2 with Day 3, not turning up and hoping. (Tiananmen Square needs a FREE advance reservation — see the Day 3 note; the view from the surrounding streets needs nothing.)</div>
 </div>
 </div>
 <div class="itinerary-day">
@@ -5551,7 +5553,7 @@ const CITIES = {
           </div>
           <div class="hunt-grid">
             <div class="graded-card">
-              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/swsh7/215.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\'hunt-img-fallback\' style=\'opacity:0.4\'>UMBRN</div>'" /></div>
+              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/swsh7/215.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\\'hunt-img-fallback\\' style=\\'opacity:0.4\\'>UMBRN</div>'" /></div>
               <div class="hunt-info">
                 <div class="hunt-name">Umbreon VMAX <strong>Alt Art</strong></div>
                 <div class="hunt-chinese">月亮伊布VMAX · 182/SV-P</div>
@@ -5560,7 +5562,7 @@ const CITIES = {
               <div class="graded-badge">🥇 AUTO<br>GRADE</div>
             </div>
             <div class="graded-card">
-              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/sv3pt5/199.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\'hunt-img-fallback\' style=\'opacity:0.4\'>CHAR</div>'" /></div>
+              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/sv3pt5/199.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\\'hunt-img-fallback\\' style=\\'opacity:0.4\\'>CHAR</div>'" /></div>
               <div class="hunt-info">
                 <div class="hunt-name">Charizard ex <strong>SAR (151)</strong></div>
                 <div class="hunt-chinese">喷火龙ex · 199/151C</div>
@@ -5569,7 +5571,7 @@ const CITIES = {
               <div class="graded-badge">🥇 AUTO<br>GRADE</div>
             </div>
             <div class="graded-card">
-              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/sv2a/25.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\'hunt-img-fallback\' style=\'opacity:0.4\'>PIKA</div>'" /></div>
+              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/sv2a/25.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\\'hunt-img-fallback\\' style=\\'opacity:0.4\\'>PIKA</div>'" /></div>
               <div class="hunt-info">
                 <div class="hunt-name">Pikachu <strong>Master Ball</strong></div>
                 <div class="hunt-chinese">皮卡丘大师球 · 025/151C</div>
@@ -5586,7 +5588,7 @@ const CITIES = {
           </div>
           <div class="hunt-grid">
             <div class="graded-card">
-              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/swsh9/174.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\'hunt-img-fallback\' style=\'opacity:0.4\'>CHAR V</div>'" /></div>
+              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/swsh9/174.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\\'hunt-img-fallback\\' style=\\'opacity:0.4\\'>CHAR V</div>'" /></div>
               <div class="hunt-info">
                 <div class="hunt-name">Charizard V <strong>Alt Art</strong></div>
                 <div class="hunt-chinese">喷火龙V异画 · SV4</div>
@@ -5595,7 +5597,7 @@ const CITIES = {
               <div class="graded-badge">🥈 GRADE<br>IF MINT</div>
             </div>
             <div class="graded-card">
-              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/swsh12pt5gg/GG70.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\'hunt-img-fallback\' style=\'opacity:0.4\'>VSTAR</div>'" /></div>
+              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/swsh12pt5gg/GG70.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\\'hunt-img-fallback\\' style=\\'opacity:0.4\\'>VSTAR</div>'" /></div>
               <div class="hunt-info">
                 <div class="hunt-name">Charizard VSTAR <strong>Alt Art</strong></div>
                 <div class="hunt-chinese">喷火龙VSTAR异画 · SV5</div>
@@ -5604,7 +5606,7 @@ const CITIES = {
               <div class="graded-badge">🥈 GRADE<br>IF MINT</div>
             </div>
             <div class="graded-card">
-              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/sv2a/205.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\'hunt-img-fallback\' style=\'opacity:0.4\'>MEW</div>'" /></div>
+              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/sv2a/205.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\\'hunt-img-fallback\\' style=\\'opacity:0.4\\'>MEW</div>'" /></div>
               <div class="hunt-info">
                 <div class="hunt-name">Mew ex <strong>SAR (151)</strong></div>
                 <div class="hunt-chinese">梦幻ex · 205/151C</div>
@@ -5613,7 +5615,7 @@ const CITIES = {
               <div class="graded-badge">🥈 GRADE<br>IF MINT</div>
             </div>
             <div class="graded-card">
-              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/sm11/222.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\'hunt-img-fallback\' style=\'opacity:0.4\'>MTW GX</div>'" /></div>
+              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/sm11/222.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\\'hunt-img-fallback\\' style=\\'opacity:0.4\\'>MTW GX</div>'" /></div>
               <div class="hunt-info">
                 <div class="hunt-name">Mewtwo &amp; Mew <strong>GX</strong></div>
                 <div class="hunt-chinese">超梦梦幻GX · CSM2b</div>
@@ -5630,7 +5632,7 @@ const CITIES = {
           </div>
           <div class="hunt-grid" style="margin-bottom:24px;">
             <div class="graded-card">
-              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/sv3pt5/207.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\'hunt-img-fallback\' style=\'opacity:0.4\'>PIKA SIR</div>'" /></div>
+              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/sv3pt5/207.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\\'hunt-img-fallback\\' style=\\'opacity:0.4\\'>PIKA SIR</div>'" /></div>
               <div class="hunt-info">
                 <div class="hunt-name">Pikachu ex <strong>SIR</strong></div>
                 <div class="hunt-chinese">皮卡丘ex · SV-P</div>
@@ -5639,7 +5641,7 @@ const CITIES = {
               <div class="graded-badge">🥉 BULK<br>STACK</div>
             </div>
             <div class="graded-card">
-              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/swsh7/133.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\'hunt-img-fallback\' style=\'opacity:0.4\'>EEVEE SIR</div>'" /></div>
+              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/swsh7/133.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\\'hunt-img-fallback\\' style=\\'opacity:0.4\\'>EEVEE SIR</div>'" /></div>
               <div class="hunt-info">
                 <div class="hunt-name">Eevee <strong>SIR</strong></div>
                 <div class="hunt-chinese">伊布ex · SV-P</div>
@@ -5648,7 +5650,7 @@ const CITIES = {
               <div class="graded-badge">🥉 BULK<br>STACK</div>
             </div>
             <div class="graded-card">
-              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/swsh7/189.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\'hunt-img-fallback\' style=\'opacity:0.4\'>EEVEE FAM</div>'" /></div>
+              <div class="hunt-img-wrap"><img src="https://wsrv.nl/?url=images.pokemontcg.io/swsh7/189.png&w=150&output=webp" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentNode.innerHTML='<div class=\\'hunt-img-fallback\\' style=\\'opacity:0.4\\'>EEVEE FAM</div>'" /></div>
               <div class="hunt-info">
                 <div class="hunt-name">Eeveelutions <strong>Set (×8)</strong></div>
                 <div class="hunt-chinese">伊布家族 · SV-P</div>
@@ -5760,7 +5762,7 @@ const CITIES = {
       <div class="day-item"><span class="time">🎯 BEST USE</span>Get the tailoring measurement done a day early — South Bund Fabric Market, 399 Lujiabang Rd (L4 → Nanpu Bridge Exit 3), open till 6pm. Buys the tailor a 5th day and de-risks the Thursday pickup. Fitting Tue, pickup Thu.</div>
       <div class="day-item"><span class="time">AFTERNOON</span>Walk Nanjing Road for city vibes. Or French Concession for tree-lined lanes and coffee.</div>
       <div class="day-item"><span class="time">BLUE HOUR</span>Pudong skyline from the Bund – classic establishing shots. Stay for golden hour → blue hour → night. This hits different after 2 weeks in nature.</div>
-      <div class="day-item"><span class="time">NIGHT</span><strong>BIG SHANGHAI CLUB NIGHT — it’s Saturday.</strong> Warm up with street beers on Yongkang Rd, then Space Plus (Pudong, 12,000m², the city’s largest) or TAXX (Found 158, Huangpu, 3,000m²) from ~11pm. Confirm the night’s programming on SmartShanghai when you land. Sunday is deliberately slow.</div>
+      <div class="day-item"><span class="time">NIGHT</span><strong>BIG SHANGHAI CLUB NIGHT — it’s Saturday.</strong> Warm up with street beers on Yongkang Rd, then Space Plus (Pudong, 12,000m², the city’s largest) or TAXX (Found 158, Huangpu, 3,000m²) from ~11pm. Confirm the night’s programming on SmartShanghai when you land. <strong>Home by DiDi — the metro shuts ~23:00.</strong> Sunday is deliberately slow.</div>
     </div>
   </div>
   <div class="itinerary-day">
@@ -5770,7 +5772,7 @@ const CITIES = {
       <div class="day-item"><span class="time">MIDDAY</span>Lunch at Jian Guo 328 (Hong-shao rou, Shanghainese classics) or browse Tianzifang alleys for street food.</div>
       <div class="day-item"><span class="time">AFTERNOON</span>⭐ South Bund Fabric Market (399 Lujiabang Rd, L4 → Nanpu Bridge Exit 3, open till 6) — get MEASURED: 1 suit + 3–5 shirts. Fitting Tue Sep 8, pickup Thu Sep 10 — this anchors the whole tailoring chain. (Skip if already measured Sat.) Then Yu Garden + City God Temple if time — zigzag bridge, Nanxiang xiaolongbao.</div>
       <div class="day-item"><span class="time">BLUE HOUR</span>Walk the Bund — second angle session if lighting differs from Day 16. Pudong skyline at dusk.</div>
-      <div class="day-item"><span class="time">EVENING</span>Chill night — local beer at a Concession bar or early rest before tomorrow's TCG marathon.</div>
+      <div class="day-item"><span class="time">EVENING</span>Chill night — local beer at a Concession bar or early rest before tomorrow's TCG marathon. 📋 <strong>TODAY: pick Tuesday night’s 24-hour bathhouse</strong> — Dianping 大众点评 → 上海全包式水疗, read <em>this month’s</em> reviews, screenshot the address in Chinese, and confirm it runs 24/7.</div>
     </div>
   </div>
   <div class="itinerary-day">
@@ -5789,7 +5791,7 @@ const CITIES = {
       <div class="day-item"><span class="time">LATE AM</span><strong>1000 Trees</strong> on Suzhou Creek — free, the plant-covered mountain-building; pairs with Millfun. Then lunch and metro to Pudong.</div>
       <div class="day-item"><span class="time">AFTERNOON</span>Shanghai Tower observation deck → Raffles City The Bund exterior → <strong>TAILOR FITTING at South Bund</strong> (nearby — try jacket, trousers + one shirt; flag anything marginal NOW, Thursday is the last full fix window). Buy the suitcase on the way back — Decathlon or Miniso (~¥200–300 hard-shell) + bubble wrap and tape.</div>
       <div class="day-item"><span class="time">BLUE HOUR</span>Second Bund session if conditions differ from Day 17.</div>
-      <div class="day-item"><span class="time">EVENING</span>Light dinner. Check in to 24-hour all-inclusive spa in the evening.</div>
+      <div class="day-item"><span class="time">EVENING</span>Light dinner, then check in to the 24-hour spa. ⚠️ <strong>VENUE NOT YET CHOSEN</strong> — pick it on Day 17. It must genuinely run <strong>24/7</strong>: 水裹·汤泉生活 (龙湖虹桥天街 B1) does; <strong>极乐汤 Gokurakuyu closes 02:00 and would break this plan</strong>. ⚠️ <strong>None are walkable from Hengshan Rd</strong> — all 20–45 min DiDi out in Hongqiao, Minhang or Pudong.</div>
     </div>
   </div>
   <div class="itinerary-day">
@@ -5955,20 +5957,20 @@ const CITIES = {
           <div class="itinerary-day">
             <div class="day-label">DAY 7 — AUG 27 — TEAHOUSE + TCG</div>
             <div class="day-items">
-              <div class="day-item"><span class="time">MORNING</span><strong>Sichuan cooking class</strong> — market-to-table (⚠️ book ASAP if still unbooked — it was due late July). Top-3 experience of the trip.</div>
+              <div class="day-item"><span class="time">MORNING</span><strong>Sichuan cooking class</strong> — market-to-table. ⚠️ <strong>NOT YET BOOKED as of 10 Aug.</strong> The hold: Viator “Chengdu Cooking Class with a Local Market Visit”, 9:00 AM, ~A$259 for 2, pickup Holiday Inn, <strong>reserve-now-pay-later so it is free to hold — book it</strong>. If it lands pre-trip the voucher is in Gmail. Top-3 experience of the trip.</div>
 <div class="day-item"><span class="time">1:00 PM</span>Mapo tofu lunch (Chen Mapo Tofu), slow hour after.</div>
 <div class="day-item"><span class="time">3:30 PM</span>🎴 GYM STOP #3 — <strong>Spinda, Chengdu Joy City LG</strong> (大悦城, Wuhou — NOT Chunxi Rd; ~30 min by metro/DiDi). Promo + first big sealed buy, then Chunxi hobby stores for price comparison.</div>
-<div class="day-item"><span class="time">EVENING</span><strong>Heming Teahouse, People’s Park</strong> — ear cleaning (采耳) ¥30–50, jasmine tea, mahjong crowd — or a Chunxi Road wander. Early-ish night; pandas at dawn tomorrow.</div>
+<div class="day-item"><span class="time">EVENING</span><strong>Heming Teahouse, People’s Park</strong> — ear cleaning (采耳) ¥30–50, jasmine tea, mahjong crowd — or a Chunxi Road wander. Early-ish night; pandas at dawn tomorrow. 📋 <strong>TONIGHT the ~window opens — buy the WULINGYUAN 4-day park pass for Sep 2–4</strong> (¥228, WeChat 张家界旅游小助手, real-name, timed entry by gate; each day then re-books daily).</div>
             </div>
           </div>
           <div class="itinerary-day">
             <div class="day-label">DAY 8 — AUG 28 — ARCHITECTURE + BIG NIGHT</div>
             <div class="day-items">
-              <div class="day-item"><span class="time">7:30 AM</span>🐼 <strong>PANDA BASE at gates-open</strong> (booked in the Aug 14 window — real-name, ¥55, manual passport lane). Cubs are active until ~9:30 — be out by 10.</div>
+              <div class="day-item"><span class="time">7:30 AM</span>🐼 <strong>PANDA BASE at gates-open</strong> — <strong>leave the Holiday Inn 06:50, DiDi ~35 min (~¥40)</strong>. Booked in the Aug 14 window (real-name, ¥55, manual passport lane). Cubs are active until ~9:30 — be out by 10.</div>
 <div class="day-item"><span class="time">11:30 AM</span>IFS panda-facade shot + Taikoo Li — an air-conditioned midday, it will be 34°C+.</div>
 <div class="day-item"><span class="time">2:30 PM</span><strong>Luxe Lakes Eco-city</strong> (Siza/Nouvel, ~3 hrs) ONLY if legs and heat allow — late afternoon, never midday. Cooler swaps: Wenshu Monastery or Eastern Suburb Memory (东郊记忆).</div>
-<div class="day-item"><span class="time">6:30 PM</span>Recovery spa (Fufu Tang, ~A$70) or massage, then pre-game dinner Jinli/Chunxi.</div>
-<div class="day-item"><span class="time">9:30 PM</span>🌌 <strong>BIG NIGHT — Jiuyanqiao</strong>: Bar Mu → riverside strip → T² (East Lake). Clubs close at 2am — start early. <strong>Tomorrow’s train is 09:25; leave the hotel 08:20.</strong></div>
+<div class="day-item"><span class="time">5:30 PM</span>💆 <strong>RECOVERY — 舒沐推拿馆</strong>, ¥148 for 60 min of proper tuina, walkable at Chunxi/Yanshikou. Then pre-game dinner Jinli/Chunxi. ⚠️ <strong>Fufu Tang re-checked 10 Aug:</strong> it is 浮浮汤温泉生活馆, an 18-hour <em>bathhouse</em> in JINNIU district (一环路北二段9号花千集) — ~15–20 min DiDi, ~¥300+, <strong>not walkable and not a massage</strong>. Keep it only if you want a pool-and-buffet afternoon instead.</div>
+<div class="day-item"><span class="time">9:30 PM</span>🌌 <strong>BIG NIGHT — Jiuyanqiao</strong>: Bar Mu → riverside strip → T² (East Lake). Clubs close at 2am — start early. <strong>Metro is long closed by then — DiDi back.</strong> <strong>Tomorrow’s train is 09:25; leave the hotel 08:20.</strong></div>
             </div>
           </div>
           <div class="itinerary-day">
@@ -6079,7 +6081,7 @@ const CITIES = {
           <div class="itinerary-day">
             <div class="day-label">DAY 13 — SEP 2 — YUANJIAJIE (AVATAR PILLARS)</div>
             <div class="day-items">
-              <div class="day-item"><span class="time">7:00 AM</span>Forest Park gate at opening → <strong>CABLE CAR UP</strong> to <strong>Yuanjiajie</strong>: Avatar Hallelujah Mountain, First Bridge Under Heaven. THE shot. Sea of cloud forms 07:00–09:00 after overnight rain — prioritise this on the first clear morning, don't save it.</div>
+              <div class="day-item"><span class="time">7:00 AM</span><strong>WULINGYUAN (标志门) entrance</strong>, ~10 min from the Pullman — park eco-shuttles are included in the pass and run inside to the cable-car station → <strong>CABLE CAR UP</strong> to <strong>Yuanjiajie</strong>: Avatar Hallelujah Mountain, First Bridge Under Heaven. THE shot. Sea of cloud forms 07:00–09:00 after overnight rain — prioritise this on the first clear morning, don't save it.</div>
               <div class="day-item"><span class="time">TACTIC</span>Bailong Elevator queues run 1–1.5 hrs going UP between 10:00–12:00, but only ~30 min going DOWN after 15:00. So: cable car up, elevator down. Cable cars and the elevator are separate tickets on top of the park pass (¥65–76 each one-way).</div>
               <div class="day-item"><span class="time">AFTERNOON</span>Golden Whip Stream valley walk — 7.5 km, shaded, along the creek floor.</div>
               <div class="day-item"><span class="time">EVENING</span>Dinner in town, review photos, rest legs.</div>
@@ -6204,10 +6206,11 @@ const CITIES = {
           <div class="itinerary-day">
             <div class="day-label">DAY 9 — AUG 29 — ARRIVE + HONGYA CAVE</div>
             <div class="day-items">
-              <div class="day-item"><span class="time">MIDDAY</span>HSR from Chengdu (~1.5 hrs). Check in Jiefangbei area.</div>
+              <div class="day-item"><span class="time">9:25 AM</span>HSR Chengdu East → <strong>Shapingba 沙坪坝</strong> — G8609 09:25→10:27 (1h02m), then Metro Line 1 → Xiaoshizi (~20 min). ⚠ NOT Chongqing North. Check in Jiefangbei area.</div>
               <div class="day-item"><span class="time">AFTERNOON</span>Walk Liberation Monument. Explore Jiefangbei CBD. Get oriented.</div>
               <div class="day-item"><span class="time">DUSK</span>Hongya Cave (洪崖洞) — arrive at dusk for the lighting transition. Spirited Away vibes. Descend all 11 floors to the riverside.</div>
               <div class="day-item"><span class="time">EVENING</span>First Chongqing hotpot dinner near Jiefangbei. Go hard on the spice.</div>
+<div class="day-item"><span class="time">9:30 PM</span>🌌 <strong>JIUJIE — Saturday night.</strong> Helen’s → Space Club / NUTS. ⚠ <strong>PASSPORTS at the door.</strong> Metro dies ~22:30 — DiDi back.</div>
             </div>
           </div>
           <div class="itinerary-day">
@@ -6362,7 +6365,7 @@ const CITIES = {
   <div class="block-title day">5-DAY ITINERARY</div>
   <div class="tip-box day-tip" style="margin-bottom:14px;"><strong>🚇 MTR</strong> <span style="display:inline-block;padding:1px 7px;border-radius:10px;color:#fff;font-family:'Share Tech Mono',monospace;font-size:10px;font-weight:700;margin-right:3px;background:#E60012;">Tsuen Wan</span><span style="display:inline-block;padding:1px 7px;border-radius:10px;color:#fff;font-family:'Share Tech Mono',monospace;font-size:10px;font-weight:700;margin-right:3px;background:#0860A8;">Island</span><span style="display:inline-block;padding:1px 7px;border-radius:10px;color:#fff;font-family:'Share Tech Mono',monospace;font-size:10px;font-weight:700;margin-right:3px;background:#00888A;">Airport Exp</span> — get an Octopus card. Google Maps works here. Full detail in the <strong>Transport</strong> tab. <a href="https://www.mtr.com.hk/en/customer/services/system_map.html" target="_blank" rel="noopener" style="color:var(--cyan);">View map ↗</a></div>
   <div class="itinerary-day">
-    <div class="day-label">DAY 22 — SEP 11 — ARRIVE FROM SHANGHAI + CARD HUNTING</div>
+    <div class="day-label">DAY 22 — SEP 11 — FLY TO HK + OZONE NIGHTCAP</div>
     <div class="day-items">
       <div class="day-item"><span class="time">MORNING</span>Late French Concession brunch, final Shanghai wander, pack — including the card suitcase.</div>
 <div class="day-item"><span class="time">1:00 PM</span><strong>Leave for PVG</strong> (45–60 min from FFC) — international check-in, allow the extra hour.</div>
@@ -6372,9 +6375,9 @@ const CITIES = {
     </div>
   </div>
   <div class="itinerary-day">
-    <div class="day-label">DAY 23 — SEP 12 — STREET PHOTOGRAPHY + SOHO NIGHT</div>
+    <div class="day-label">DAY 23 — SEP 12 — JUNK BOAT + SOHO NIGHT</div>
     <div class="day-items">
-      <div class="day-item"><span class="time">10:00 AM</span>⛵ <strong>JUNK BOAT PARTY</strong> (booked 2–3 weeks ahead) — all-inclusive drinks, music, swimming. The best meet-people day of the trip.</div>
+      <div class="day-item"><span class="time">10:00 AM</span>⛵ <strong>JUNK BOAT PARTY — ⚠️ NOT YET BOOKED, and it cannot be booked before departure.</strong> <em>Premise corrected 10 Aug:</em> an “open boat for two” is not a bookable product — operators sell whole-boat charters (20–25 pax min). The real path is a social-group ticketed boat (Meetup “DJunk Hong Kong” ~HK$850 pp from Central Pier 9; LETS Events HK; Sai Kung), and those only list <strong>2–4 weeks out</strong>. Three watch alarms are live (Aug 19 · Aug 29 · Sep 5) and this block gets the pier and time when one lands. <strong>Fallback if none does:</strong> Sai Kung beach-and-seafood day (MTR Choi Hung C2 → minibus 1A) — tonight’s crawl is unchanged either way.</div>
 <div class="day-item"><span class="time">5:30 PM</span>Back to the Hopewell, nap, recover.</div>
 <div class="day-item"><span class="time">9:00 PM</span><strong>SoHo crawl</strong> — The Holywell’s (140 Hollywood Rd) → Quinary / Old Man → <strong>Lan Kwai Fong at Saturday peak</strong> → Cassio (LKF Tower) for the bar-to-club transition.</div>
     </div>
@@ -6392,7 +6395,8 @@ const CITIES = {
   <div class="itinerary-day">
     <div class="day-label">DAY 25 — SEP 14 — FLEX DAY + FLY HOME</div>
     <div class="day-items">
-      <div class="day-item"><span class="time">MORNING</span>Option: <strong>Dragon’s Back hike</strong> — 90-min ridge walk ending at Big Wave Bay + swim. (Or sleep; swap for Peak/escalator if legs are done.)</div>
+      <div class="day-item"><span class="time">MORNING</span>Option: <strong>Dragon’s Back hike</strong> — <strong>Island line to Shau Kei Wan (exit A3) → bus 9 to To Tei Wan, ~40 min door to trailhead.</strong> 90-min ridge walk ending at Big Wave Bay + swim. (Or sleep; swap for Peak/escalator if legs are done.)</div>
+<div class="day-item"><span class="time">3:30 PM</span>💆 <strong>LAST ONE — Ten Feet Tall</strong>, 21/F The L. Place, 139 Queen’s Rd Central, +852 2971 1010. Deep tissue 50 min HK$510, foot 50 min HK$395. <strong>Open till 23:30</strong>, so it survives a late Dragon’s Back — and the bags are already dropped, so it can slide later.</div>
 <div class="day-item"><span class="time">1:00 PM</span>🎴 <strong>Mong Kok run</strong>: Sino Centre (<strong>582–592 Nathan Rd</strong>) → HobbyX (President Commercial Centre, 608 Nathan Rd) → Moonroad → Pokémon Hub (K11 Art Mall, TST). Shops open ~1pm.</div>
 <div class="day-item"><span class="time">4:00 PM</span><strong>Final pack + WEIGH</strong> (23 kg pp; a 24–32 kg piece is a flat USD 130). Then <strong>Airport Express IN-TOWN CHECK-IN at Hong Kong Station</strong> — drop ALL bags incl. the card case; the evening is luggage-free. The room is paid through tonight — keep it until you leave.</div>
 <div class="day-item"><span class="time">10:00 PM</span>Airport Express from Central (24 min), no bags. Airside in time for the 00:20.</div>
@@ -6444,12 +6448,16 @@ let currentCat = null;
 document.addEventListener('click', function(e){
   const t = e.target.closest('.lk'); if(!t) return;
   if (t.dataset.h) { showHotel(t.dataset.h); return; }
-  if (t.dataset.c) { openCity(t.dataset.c, {stopPropagation:function(){}}); return; }
+  if (t.dataset.c) {
+    const parts = String(t.dataset.c).split(':');       // "chengdu" or "chengdu:food"
+    openCity(parts[0], {stopPropagation:function(){}});
+    if (parts[1]) { setTimeout(function(){ switchCat(parts[0], parts[1]); }, 60); }
+    return; }
   if (t.dataset.x) { const el=document.getElementById(t.dataset.x);
     if(!el) return;
     const ov=document.getElementById('transport-overlay');
     const card=el.closest('.tx-card')||el;
-    const go=function(){ card.scrollIntoView({behavior:'smooth',block:'center'});
+    const go=function(){ txRevealPaneFor(card); card.scrollIntoView({behavior:'smooth',block:'center'});
       card.classList.add('tx-flash'); setTimeout(function(){card.classList.remove('tx-flash');},3000); };
     if (ov && ov.contains(el) && ov.style.display==='none') { openTransportOverlay(); setTimeout(go, 350); }
     else { go(); } }
@@ -6528,9 +6536,111 @@ function openTransportOverlay() {
   document.getElementById('transport-overlay').style.display = 'block';
   document.body.style.overflow = 'hidden';
   document.getElementById('transport-overlay').scrollTop = 0;
+  txAssignPanes();
+  txShowPane(txCurrentPane || 'around');
   // Init map on first open
   if (!txMap) { setTimeout(initTxMap, 100); }
   else { setTimeout(() => txMap.invalidateSize(), 150); }
+}
+// ===== LOGISTICS PANES =====
+// The overlay had grown to 5,133 words in one scroll: flights, rail, metro,
+// money, comms, massage, scams, DiDi, practical, embassy, two budgets, booking
+// platforms and dates, all under a button labelled "transport".
+//
+// Rather than physically move 65 KB of markup (a real risk this close to
+// departure), the panes are assigned at RUNTIME from this manifest. The DOM is
+// untouched, so every existing anchor id still resolves; only visibility moves.
+const TX_PANES = [
+  { key:'around', label:'\u{1F684} Getting Around', color:'#0ea5e9' },
+  { key:'wrong',  label:'\u{1F198} When It Goes Wrong', color:'#dc2626' },
+  { key:'living', label:'\u{1F4F6} Living', color:'#8b5cf6' },
+  { key:'money',  label:'\u{1F4B0} Money & Bookings', color:'#10b981' },
+];
+// Section header text -> pane. Matched on a leading fragment so the long
+// parenthetical suffixes on some headers do not have to be repeated here.
+const TX_SECTION_PANE = [
+  ['\u2708 FLIGHTS',            'around'],
+  ['\u{1F684} HIGH-SPEED RAIL', 'around'],
+  ['\u{1F68C} LOCAL CONNECTIONS','around'],
+  ['\u{1F687} CITY METRO',      'around'],
+  ['\u{1F9F0} SURVIVAL',        'wrong'],
+  ['\u{1F4B0} TRANSPORT BUDGET','money'],
+  ['\u{1F4B0} TRIP BUDGET',     'money'],
+  ['\u{1F4F1} BOOKING PLATFORMS','money'],
+  ['\u23F0 CRITICAL BOOKING',   'money'],
+];
+// Cards that live inside one section but belong to another pane. The SURVIVAL
+// section in particular had become a catch-all.
+const TX_CARD_PANE = {
+  'tx-connectivity':'living', 'tx-massage':'living', 'tx-practical':'living',
+  'tx-didi':'around', 'tx-money':'wrong', 'tx-scams':'wrong',
+};
+let txPanesReady = false;
+function txAssignPanes() {
+  if (txPanesReady) return;
+  const ov = document.getElementById('transport-overlay');
+  const box = ov && ov.firstElementChild;
+  if (!box) return;
+  let cur = 'around';               // map + route strip precede the first header
+  Array.from(box.children).forEach(function(el, idx) {
+    if (idx === 0 || el.id === 'tx-tabbar') { el.dataset.pane = 'always'; return; }
+    if (el.classList.contains('tx-section-hdr')) {
+      const txt = (el.textContent || '').trim();
+      const hit = TX_SECTION_PANE.find(function(pair){ return txt.indexOf(pair[0]) === 0; });
+      if (hit) cur = hit[1];
+      el.dataset.pane = cur;
+      return;
+    }
+    const badge = el.querySelector('.tx-card-badge[id]');
+    const override = badge && TX_CARD_PANE[badge.id];
+    el.dataset.pane = override || cur;
+  });
+  // Build the bar
+  const bar = document.getElementById('tx-tabbar');
+  if (bar && !bar.children.length) {
+    TX_PANES.forEach(function(pane){
+      const b = document.createElement('button');
+      b.className = 'tx-tab'; b.dataset.pane = pane.key; b.textContent = pane.label;
+      b.style.cssText = 'font-family:\'Share Tech Mono\',monospace;font-size:12px;letter-spacing:1px;'
+        + 'padding:9px 15px;cursor:pointer;border:1px solid #e2e8f0;background:#fff;color:#64748b;';
+      b.onclick = function(){ txShowPane(pane.key); };
+      bar.appendChild(b);
+    });
+  }
+  txPanesReady = true;
+}
+function txShowPane(key) {
+  txAssignPanes();
+  const ov = document.getElementById('transport-overlay');
+  const box = ov && ov.firstElementChild;
+  if (!box) return;
+  Array.from(box.children).forEach(function(el){
+    const p = el.dataset.pane;
+    el.style.display = (p === 'always' || p === key) ? '' : 'none';
+  });
+  document.querySelectorAll('#tx-tabbar .tx-tab').forEach(function(b){
+    const on = b.dataset.pane === key;
+    const def = (TX_PANES.find(function(x){return x.key===b.dataset.pane;})||{}).color || '#0ea5e9';
+    b.style.background = on ? def : '#fff';
+    b.style.color = on ? '#fff' : '#64748b';
+    b.style.borderColor = on ? def : '#e2e8f0';
+  });
+  txCurrentPane = key;
+  // The map only exists in Getting Around; Leaflet needs a nudge when it
+  // reappears after being display:none, or it renders as a grey box.
+  if (key === 'around' && window.txMap) { setTimeout(function(){ txMap.invalidateSize(); }, 60); }
+}
+let txCurrentPane = 'around';
+// Given any element inside the overlay, make its pane the active one.
+function txRevealPaneFor(el) {
+  txAssignPanes();
+  const ov = document.getElementById('transport-overlay');
+  const box = ov && ov.firstElementChild;
+  if (!box || !box.contains(el)) return;
+  let node = el;
+  while (node && node.parentElement !== box) { node = node.parentElement; }
+  const pane = node && node.dataset.pane;
+  if (pane && pane !== 'always' && pane !== txCurrentPane) txShowPane(pane);
 }
 function closeTransportOverlay() {
   document.getElementById('transport-overlay').style.display = 'none';
