@@ -64,6 +64,17 @@ details.lv-card-side:not([open]){opacity:.8}
 .lv-tldate-hot{color:#fff;background:var(--cyan)}
 .lv-tlsum .lv-sidetitle{flex:1 1 55%;min-width:55%}
 .lv-sidesum .lv-sidetitle{flex:1 1 50%;min-width:50%}
+/* ---- field log (11 Aug): same markup, CSS and localStorage key ('huntLog') as
+   hunt-list.html. Both files are served from the same origin, so ONE log covers
+   both surfaces and there is a single COPY LOG at the end of the day. ---- */
+.logrow{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.lb{border:0;border-radius:7px;padding:8px 10px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+.lb-b{background:#e2f3e6;color:#1a7f37}.lb-p{background:#fdecec;color:#a11}.lb-s{background:#eef;color:#335}
+#logbar{position:fixed;bottom:0;left:0;right:0;background:#1a1a1a;color:#fff;display:none;align-items:center;gap:10px;padding:10px 14px;font-size:14px;z-index:9999}
+#logbar button{border:0;border-radius:7px;padding:9px 14px;font-weight:700;cursor:pointer;font-family:inherit}
+#lb-copy{background:#1a7f37;color:#fff}#lb-clear{background:#444;color:#ccc}
+body.haslog{padding-bottom:64px}
+
 </style>
 <style>/* offline fonts (base64 woff2) */
 @font-face{font-family:'Share Tech Mono';font-style:normal;font-weight:400;font-display:swap;src:url(data:font/woff2;base64,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) format('woff2');}
@@ -815,7 +826,7 @@ footer .fr { font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--bo
     </div>
     <div style="background:#fffbeb;border:1px solid rgba(217,119,6,0.25);border-left:3px solid #d97706;padding:10px 14px;margin-bottom:18px;font-size:12px;line-height:1.5;color:#4a5568;">
       <strong style="font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:#d97706;">⚠ CARD ART NOTE</strong><br>
-      Images below show international (EN/JP) prints for visual reference — the artwork matches, but Chinese SC versions have different set numbering &amp; Chinese text. Verify exact SC printing before buying: <a href="https://www.pokeos.com/tcg/chn" target="_blank" style="color:#2563eb;">PokéOS SC Cardex</a> · <a href="https://www.jihuanshe.com" target="_blank" style="color:#2563eb;">集换社 Jihuanshe (CN market prices)</a>
+      Audited 11 Aug: <b>56 of the 57 card scans are genuine Simplified Chinese prints</b> — Chinese names and SC set codes on the card face — and <b>every picture matches the card it is filed under</b>. (The one exception is Mewtwo GX “Test Tube” 78/73, an English scan.) The old note here claimed these were EN/JP reference art; that was wrong. Still confirm the number at the counter: <a href="https://www.pokeos.com/tcg/chn" target="_blank" style="color:#2563eb;">PokéOS SC Cardex</a> · <a href="https://www.jihuanshe.com" target="_blank" style="color:#2563eb;">集换社 Jihuanshe (CN market prices)</a>
     </div>
     <!-- GYM PROMO PASSPORT -->
     <div style="background:var(--card);border:1px solid rgba(16,185,129,0.3);padding:16px 18px;margin-bottom:18px;">
@@ -5391,7 +5402,7 @@ const CITIES = {
             <span class="hunt-tier-meta">¥399–800 · $84–168 AUD</span>
           </div>
           <div class="hunt-grid">
-            <div class="hunt-card" data-id="151-journey" data-price-lo="158" data-price-hi="158">
+            <div class="hunt-card" data-k="151 Journey Booster Box · 151：旅程 · 151A" data-id="151-journey" data-price-lo="158" data-price-hi="158">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" data-box-id="151-journey" style="opacity:0.4;font-size:12px;">151A</div></div>
               <div class="hunt-info">
                 <div class="hunt-name">151 Journey <strong>Booster Box</strong></div>
@@ -5405,8 +5416,8 @@ const CITIES = {
                 <button class="hunt-btn hunt-minus" onclick="huntChange('151-journey',-1)">－</button>
                 <div class="hunt-unit-list" id="units-151-journey"></div>
               </div>
-            </div>
-            <div class="hunt-card" data-id="151-surprise" data-price-lo="164" data-price-hi="164">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="151 Surprise Booster Box · 151：惊喜 · 151B" data-id="151-surprise" data-price-lo="164" data-price-hi="164">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" data-box-id="151-surprise" style="opacity:0.4;font-size:12px;">151B</div></div>
               <div class="hunt-info">
                 <div class="hunt-name">151 Surprise <strong>Booster Box</strong></div>
@@ -5420,8 +5431,8 @@ const CITIES = {
                 <button class="hunt-btn hunt-minus" onclick="huntChange('151-surprise',-1)">－</button>
                 <div class="hunt-unit-list" id="units-151-surprise"></div>
               </div>
-            </div>
-            <div class="hunt-card" data-id="151-hope" data-price-lo="168" data-price-hi="168">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="151 Hope Booster Box · 151：希望 · 151C" data-id="151-hope" data-price-lo="168" data-price-hi="168">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" data-box-id="151-hope" style="opacity:0.4;font-size:12px;">151C</div></div>
               <div class="hunt-info">
                 <div class="hunt-name">151 Hope <strong>Booster Box</strong></div>
@@ -5435,8 +5446,8 @@ const CITIES = {
                 <button class="hunt-btn hunt-minus" onclick="huntChange('151-hope',-1)">－</button>
                 <div class="hunt-unit-list" id="units-151-hope"></div>
               </div>
-            </div>
-            <div class="hunt-card" data-id="151-box" data-price-lo="84" data-price-hi="84">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="151 Collector Gift Box · 151礼盒 · 151-BOX" data-id="151-box" data-price-lo="84" data-price-hi="84">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" style="opacity:0.5;font-size:13px;">151<br>GIFT</div></div>
               <div class="hunt-info">
                 <div class="hunt-name">151 <strong>Collector Gift Box</strong></div>
@@ -5450,7 +5461,7 @@ const CITIES = {
                 <button class="hunt-btn hunt-minus" onclick="huntChange('151-box',-1)">－</button>
                 <div class="hunt-unit-list" id="units-151-box"></div>
               </div>
-            </div>
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
           </div>
 
           <!-- GEM PACKS -->
@@ -5460,31 +5471,31 @@ const CITIES = {
             <span class="hunt-tier-meta">¥180–230 · $38–48 AUD</span>
           </div>
           <div class="hunt-grid">
-            <div class="hunt-card" data-id="gem-vol1" data-price-lo="38" data-price-hi="38">
+            <div class="hunt-card" data-k="Gem Pack Vol. 1 · 宝石包 Vol.1 · GEM1" data-id="gem-vol1" data-price-lo="38" data-price-hi="38">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" style="opacity:0.5;font-size:13px;">GEM<br>V1</div></div>
               <div class="hunt-info"><div class="hunt-name">Gem Pack <strong>Vol. 1</strong></div><div class="hunt-chinese">宝石包 Vol.1 · GEM1</div><div class="hunt-notes">The original. Older stock — may be harder to find. If you see it, buy it.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥180</span><span class="hunt-price-tag" style="color:var(--yellow);">$38 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('gem-vol1',1)">＋</button><span class="hunt-count" id="cnt-gem-vol1">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('gem-vol1',-1)">－</button><div class="hunt-unit-list" id="units-gem-vol1"></div></div>
-            </div>
-            <div class="hunt-card" data-id="gem-vol2" data-price-lo="40" data-price-hi="40">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="Gem Pack Vol. 2 · 宝石包 Vol.2 · GEM2" data-id="gem-vol2" data-price-lo="40" data-price-hi="40">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" style="opacity:0.5;font-size:13px;">GEM<br>V2</div></div>
               <div class="hunt-info"><div class="hunt-name">Gem Pack <strong>Vol. 2</strong></div><div class="hunt-chinese">宝石包 Vol.2 · GEM2</div><div class="hunt-notes">Second volume. Eevee Heroes content — Umbreon/Sylveon/Leafeon pull pool. Strong chase.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥190</span><span class="hunt-price-tag" style="color:var(--yellow);">$40 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('gem-vol2',1)">＋</button><span class="hunt-count" id="cnt-gem-vol2">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('gem-vol2',-1)">－</button><div class="hunt-unit-list" id="units-gem-vol2"></div></div>
-            </div>
-            <div class="hunt-card" data-id="gem-vol3" data-price-lo="42" data-price-hi="42">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="Gem Pack Vol. 3 · 宝石包 Vol.3 · GEM3" data-id="gem-vol3" data-price-lo="42" data-price-hi="42">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" data-box-id="gem-vol3" style="opacity:0.4;font-size:12px;">GEM3</div></div>
               <div class="hunt-info"><div class="hunt-name">Gem Pack <strong>Vol. 3</strong></div><div class="hunt-chinese">宝石包 Vol.3 · GEM3</div><div class="hunt-notes">Gengar-themed. Ghost/Dark focus. Gengar AR is the flagship chase. 15 packs · 4 cards each.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥200</span><span class="hunt-price-tag" style="color:var(--yellow);">$42 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('gem-vol3',1)">＋</button><span class="hunt-count" id="cnt-gem-vol3">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('gem-vol3',-1)">－</button><div class="hunt-unit-list" id="units-gem-vol3"></div></div>
-            </div>
-            <div class="hunt-card" data-id="gem-vol4" data-price-lo="46" data-price-hi="46">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="Gem Pack Vol. 4 · 宝石包 Vol.4 · GEM4" data-id="gem-vol4" data-price-lo="46" data-price-hi="46">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" style="opacity:0.5;font-size:13px;">GEM<br>V4</div></div>
               <div class="hunt-info"><div class="hunt-name">Gem Pack <strong>Vol. 4</strong></div><div class="hunt-chinese">宝石包 Vol.4 · GEM4</div><div class="hunt-notes">Newest volume available. Check current pull pool before buying — newer often means more supply and better singles odds.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥220</span><span class="hunt-price-tag" style="color:var(--yellow);">$46 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('gem-vol4',1)">＋</button><span class="hunt-count" id="cnt-gem-vol4">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('gem-vol4',-1)">－</button><div class="hunt-unit-list" id="units-gem-vol4"></div></div>
-            </div>
-            <div class="hunt-card" data-id="gem-vol5" data-price-lo="48" data-price-hi="48">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="Gem Pack Vol. 5 · 宝石包 Vol.5 · GEM5" data-id="gem-vol5" data-price-lo="48" data-price-hi="48">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" style="opacity:0.5;font-size:13px;">GEM<br>V5</div></div>
               <div class="hunt-info"><div class="hunt-name">Gem Pack <strong>Vol. 5</strong></div><div class="hunt-chinese">宝石包 Vol.5 · GEM5</div><div class="hunt-notes">Latest release. Freshest stock — widest availability. Buy multiples if found cheap.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥230</span><span class="hunt-price-tag" style="color:var(--yellow);">$48 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('gem-vol5',1)">＋</button><span class="hunt-count" id="cnt-gem-vol5">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('gem-vol5',-1)">－</button><div class="hunt-unit-list" id="units-gem-vol5"></div></div>
-            </div>
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
           </div>
 
           <!-- STANDARD BOOSTER SETS -->
@@ -5494,26 +5505,26 @@ const CITIES = {
             <span class="hunt-tier-meta">¥400–700 · $84–147 AUD</span>
           </div>
           <div class="hunt-grid">
-            <div class="hunt-card" data-id="csv8-bright" data-price-lo="95" data-price-hi="95">
+            <div class="hunt-card" data-k="Bright Fantasy CSV8 · 璀璨奇想 · CSV8" data-id="csv8-bright" data-price-lo="95" data-price-hi="95">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" style="opacity:0.5;font-size:11px;">CSV8<br>BRIGHT</div></div>
               <div class="hunt-info"><div class="hunt-name">Bright Fantasy <strong>CSV8</strong></div><div class="hunt-chinese">璀璨奇想 · CSV8</div><div class="hunt-notes">Current CN SV rotation. Check pull list before buying — newer sets have more predictable chase pool.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥450</span><span class="hunt-price-tag" style="color:var(--yellow);">$95 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('csv8-bright',1)">＋</button><span class="hunt-count" id="cnt-csv8-bright">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('csv8-bright',-1)">－</button><div class="hunt-unit-list" id="units-csv8-bright"></div></div>
-            </div>
-            <div class="hunt-card" data-id="csv7-blade" data-price-lo="84" data-price-hi="84">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="Blade Awakened CSV7 · 利刃猛醒 · CSV7" data-id="csv7-blade" data-price-lo="84" data-price-hi="84">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" style="opacity:0.5;font-size:11px;">CSV7<br>BLADE</div></div>
               <div class="hunt-info"><div class="hunt-name">Blade Awakened <strong>CSV7</strong></div><div class="hunt-chinese">利刃猛醒 · CSV7</div><div class="hunt-notes">CN SV era set. Charizard ex SAR (SV7) pull target — this is the set to buy if hunting that specific card.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥400</span><span class="hunt-price-tag" style="color:var(--yellow);">$84 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('csv7-blade',1)">＋</button><span class="hunt-count" id="cnt-csv7-blade">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('csv7-blade',-1)">－</button><div class="hunt-unit-list" id="units-csv7-blade"></div></div>
-            </div>
-            <div class="hunt-card" data-id="m3f-nihil" data-price-lo="105" data-price-hi="105">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="Nihil Zero M3F · 虚空零点 · M3F" data-id="m3f-nihil" data-price-lo="105" data-price-hi="105">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" style="opacity:0.5;font-size:11px;">M3F<br>NIHIL</div></div>
               <div class="hunt-info"><div class="hunt-name">Nihil Zero <strong>M3F</strong></div><div class="hunt-chinese">虚空零点 · M3F</div><div class="hunt-notes">Premium CN set. Higher price = stronger chase pool. Iron Hands ex, Miraidon ex focus. Worth the premium over standard sets.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥500</span><span class="hunt-price-tag" style="color:var(--yellow);">$105 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('m3f-nihil',1)">＋</button><span class="hunt-count" id="cnt-m3f-nihil">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('m3f-nihil',-1)">－</button><div class="hunt-unit-list" id="units-m3f-nihil"></div></div>
-            </div>
-            <div class="hunt-card" data-id="cs4-nine" data-price-lo="147" data-price-hi="147">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="Nine Colors Gather CS4 · 九彩汇聚 · CS4" data-id="cs4-nine" data-price-lo="147" data-price-hi="147">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" data-box-id="gem-eeveeheroes" style="opacity:0.4;font-size:12px;">CS4</div></div>
               <div class="hunt-info"><div class="hunt-name">Nine Colors Gather <strong>CS4</strong></div><div class="hunt-chinese">九彩汇聚 · CS4</div><div class="hunt-notes">S&S era box containing Umbreon/Eevee Heroes content. Mew VMAX, Rayquaza VMAX alt art. High-value older set — buy if in stock.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥700</span><span class="hunt-price-tag" style="color:var(--yellow);">$147 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('cs4-nine',1)">＋</button><span class="hunt-count" id="cnt-cs4-nine">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('cs4-nine',-1)">－</button><div class="hunt-unit-list" id="units-cs4-nine"></div></div>
-            </div>
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
           </div>
 
           <!-- ══════════════════════════════════════════
@@ -5530,16 +5541,16 @@ const CITIES = {
             <span class="hunt-tier-meta">¥588–888 · $124–187 AUD</span>
           </div>
           <div class="hunt-grid">
-            <div class="hunt-card" data-id="gift-eevee-box" data-price-lo="187" data-price-hi="187">
+            <div class="hunt-card" data-k="Eevee Advanced Gift Box · 伊布高级礼盒 · EEVEE-BOX" data-id="gift-eevee-box" data-price-lo="187" data-price-hi="187">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" data-box-id="gem-eevee" style="opacity:0.4;font-size:12px;">EEVEE</div></div>
               <div class="hunt-info"><div class="hunt-name">Eevee <strong>Advanced Gift Box</strong></div><div class="hunt-chinese">伊布高级礼盒 · EEVEE-BOX</div><div class="hunt-notes">Premium Eevee box with exclusive promo, packs and accessories. CN-only. Strong resale as a sealed unit — buy multiples if available.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥888</span><span class="hunt-price-tag" style="color:var(--yellow);">$187 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('gift-eevee-box',1)">＋</button><span class="hunt-count" id="cnt-gift-eevee-box">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('gift-eevee-box',-1)">－</button><div class="hunt-unit-list" id="units-gift-eevee-box"></div></div>
-            </div>
-            <div class="hunt-card" data-id="gift-midautumn" data-price-lo="124" data-price-hi="124">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="Mid-Autumn Festival Box · 中秋节礼盒 · FEST-2026" data-id="gift-midautumn" data-price-lo="124" data-price-hi="124">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" style="opacity:0.5;font-size:11px;">MID<br>AUTUMN</div></div>
               <div class="hunt-info"><div class="hunt-name">Mid-Autumn Festival <strong>Box</strong></div><div class="hunt-chinese">中秋节礼盒 · FEST-2026</div><div class="hunt-notes">2026 festival exclusive. Only available around Mid-Autumn Festival (Sep 2026 — perfect timing). Limited print. Buy immediately if seen.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥588</span><span class="hunt-price-tag" style="color:var(--yellow);">$124 AUD</span><span class="hunt-price-tag" style="color:var(--magenta);">SEPT TIMING ✓</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('gift-midautumn',1)">＋</button><span class="hunt-count" id="cnt-gift-midautumn">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('gift-midautumn',-1)">－</button><div class="hunt-unit-list" id="units-gift-midautumn"></div></div>
-            </div>
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
           </div>
 
           <div class="hunt-tier-header">
@@ -5548,21 +5559,21 @@ const CITIES = {
             <span class="hunt-tier-meta">¥350–450 · $74–95 AUD</span>
           </div>
           <div class="hunt-grid">
-            <div class="hunt-card" data-id="gift-mewtwo151" data-price-lo="84" data-price-hi="84">
+            <div class="hunt-card" data-k="Mewtwo 151 Gift Box · 超梦151礼盒 · 151-GIFT" data-id="gift-mewtwo151" data-price-lo="84" data-price-hi="84">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" data-box-id="gem-mew" style="opacity:0.4;font-size:12px;">MTW</div></div>
               <div class="hunt-info"><div class="hunt-name">Mewtwo 151 <strong>Gift Box</strong></div><div class="hunt-chinese">超梦151礼盒 · 151-GIFT</div><div class="hunt-notes">Mewtwo promo card + 151 packs. Good volume buy. Contains Mewtwo ex SAR pull opportunity alongside box promo.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥399</span><span class="hunt-price-tag" style="color:var(--yellow);">$84 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('gift-mewtwo151',1)">＋</button><span class="hunt-count" id="cnt-gift-mewtwo151">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('gift-mewtwo151',-1)">－</button><div class="hunt-unit-list" id="units-gift-mewtwo151"></div></div>
-            </div>
-            <div class="hunt-card" data-id="gift-30th" data-price-lo="95" data-price-hi="95">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="30th Anniversary Box · 最初伙伴系列 · 2026-BOX" data-id="gift-30th" data-price-lo="95" data-price-hi="95">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" style="opacity:0.5;font-size:11px;">30TH<br>ANNI</div></div>
               <div class="hunt-info"><div class="hunt-name">30th Anniversary <strong>Box</strong></div><div class="hunt-chinese">最初伙伴系列 · 2026-BOX</div><div class="hunt-notes">2026 anniversary commemorative box. Starter trio theme. Limited run — grab if available.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥450</span><span class="hunt-price-tag" style="color:var(--yellow);">$95 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('gift-30th',1)">＋</button><span class="hunt-count" id="cnt-gift-30th">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('gift-30th',-1)">－</button><div class="hunt-unit-list" id="units-gift-30th"></div></div>
-            </div>
-            <div class="hunt-card" data-id="gift-lny" data-price-lo="74" data-price-hi="74">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="Lunar New Year Box · 农历新年礼盒 · 2026-LNY" data-id="gift-lny" data-price-lo="74" data-price-hi="74">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" style="opacity:0.5;font-size:11px;">LNY<br>2026</div></div>
               <div class="hunt-info"><div class="hunt-name">Lunar New Year <strong>Box</strong></div><div class="hunt-chinese">农历新年礼盒 · 2026-LNY</div><div class="hunt-notes">Chinese New Year 2026 exclusive. Festival-themed. Limited availability — may be hard to find in Sept but check anyway.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥350</span><span class="hunt-price-tag" style="color:var(--yellow);">$74 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('gift-lny',1)">＋</button><span class="hunt-count" id="cnt-gift-lny">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('gift-lny',-1)">－</button><div class="hunt-unit-list" id="units-gift-lny"></div></div>
-            </div>
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
           </div>
 
           <!-- STORE EXCLUSIVES -->
@@ -5572,21 +5583,21 @@ const CITIES = {
             <span class="hunt-tier-meta">¥50–800 · $10–168 AUD · CHECK IN-STORE</span>
           </div>
           <div class="hunt-grid">
-            <div class="hunt-card" data-id="store-gift-box" data-price-lo="63" data-price-hi="168">
+            <div class="hunt-card" data-k="Store Exclusive Gift Box · 店铺限定礼盒" data-id="store-gift-box" data-price-lo="63" data-price-hi="168">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" style="opacity:0.5;font-size:11px;">STORE<br>GIFT</div></div>
               <div class="hunt-info"><div class="hunt-name">Store Exclusive <strong>Gift Box</strong></div><div class="hunt-chinese">店铺限定礼盒</div><div class="hunt-notes">Variable — only available in-store at Card Master or Maiduihui. Can't be ordered online. Check on arrival — these sell out fast.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥300–800</span><span class="hunt-price-tag" style="color:var(--yellow);">$63–168 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('store-gift-box',1)">＋</button><span class="hunt-count" id="cnt-store-gift-box">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('store-gift-box',-1)">－</button><div class="hunt-unit-list" id="units-store-gift-box"></div></div>
-            </div>
-            <div class="hunt-card" data-id="store-event-box" data-price-lo="42" data-price-hi="126">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="Event Exclusive Box · 活动限定礼盒" data-id="store-event-box" data-price-lo="42" data-price-hi="126">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" style="opacity:0.5;font-size:11px;">EVENT<br>BOX</div></div>
               <div class="hunt-info"><div class="hunt-name">Event Exclusive <strong>Box</strong></div><div class="hunt-chinese">活动限定礼盒</div><div class="hunt-notes">Tournament and event boxes. Shown only at in-store events. Ask staff about upcoming events when you visit.</div><div class="hunt-price-row"><span class="hunt-price-tag">¥200–600</span><span class="hunt-price-tag" style="color:var(--yellow);">$42–126 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('store-event-box',1)">＋</button><span class="hunt-count" id="cnt-store-event-box">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('store-event-box',-1)">－</button><div class="hunt-unit-list" id="units-store-event-box"></div></div>
-            </div>
-            <div class="hunt-card" data-id="store-promo-bundle" data-price-lo="10" data-price-hi="42">
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
+            <div class="hunt-card" data-k="Promo Pack Bundle · 限定促销包" data-id="store-promo-bundle" data-price-lo="10" data-price-hi="42">
               <div class="hunt-img-wrap"><div class="hunt-img-fallback" style="opacity:0.5;font-size:11px;">PROMO<br>PACK</div></div>
               <div class="hunt-info"><div class="hunt-name">Promo Pack <strong>Bundle</strong></div><div class="hunt-chinese">限定促销包</div><div class="hunt-notes">Store promo bundles — loose packs with exclusive promo inclusions (not the same as bulk loose packs — these are sealed store bundles).</div><div class="hunt-price-row"><span class="hunt-price-tag">¥50–200</span><span class="hunt-price-tag" style="color:var(--yellow);">$10–42 AUD</span></div></div>
               <div class="hunt-counter-col"><button class="hunt-btn hunt-plus" onclick="huntChange('store-promo-bundle',1)">＋</button><span class="hunt-count" id="cnt-store-promo-bundle">0</span><button class="hunt-btn hunt-minus" onclick="huntChange('store-promo-bundle',-1)">－</button><div class="hunt-unit-list" id="units-store-promo-bundle"></div></div>
-            </div>
+            <div class="logrow"><button class="lb lb-b" data-log="BOUGHT">✓ BOUGHT</button><button class="lb lb-p" data-log="PASSED">✗ PASSED</button><button class="lb lb-s" data-log="SAW">📸 SAW</button></div></div>
           </div>
 
           <!-- ══════════════════════════════════════════
@@ -6928,5 +6939,67 @@ document.addEventListener('keydown', function(e){
   if (e.key === 'Escape') closeBoardsOverlay();
 });
 </script>
+
+<script>
+// ===== FIELD LOG (added 11 Aug) =====
+// Deliberately identical to hunt-list.html: same key, same record shape, same
+// COPY LOG output. Same origin => the two pages share one log, so a day's
+// buying is one paste at the end of the night instead of two.
+// The card label travels in data-k and never enters a code string - the version
+// in hunt-list.html had 12 dead buttons because names like "Lisia's Appeal SAR"
+// closed the JS string early. CAPTURE phase so a log button never triggers a
+// card's own click handler.
+(function(){
+  var LK = 'huntLog';
+  function getLog(){ try { return JSON.parse(localStorage.getItem(LK) || '[]'); } catch(e){ return []; } }
+  window.huntLog = function(card, action){
+    var price = prompt(action + ' — ' + card + '\nPrice (start with ¥ or A$, blank to skip):');
+    if (price === null) return;
+    var log = getLog();
+    log.push({ t:new Date().toISOString().slice(0,16).replace('T',' '), card:card, action:action, price:(price||'').trim() });
+    localStorage.setItem(LK, JSON.stringify(log));
+    renderLogBar();
+  };
+  function renderLogBar(){
+    var log = getLog(), bar = document.getElementById('logbar');
+    if (!bar) return;
+    bar.style.display = log.length ? 'flex' : 'none';
+    document.body.classList.toggle('haslog', !!log.length);
+    var n = document.getElementById('lb-count');
+    if (n) n.textContent = log.length + (log.length === 1 ? ' entry' : ' entries') + ' logged';
+  }
+  window.copyLog = function(){
+    var log = getLog();
+    var txt = 'HUNT LOG — paste this to Claude to record decisions:\n' +
+      log.map(function(e){ return e.t + ' · ' + e.action + ' · ' + e.card + (e.price ? ' · ' + e.price : ''); }).join('\n');
+    var btn = document.getElementById('lb-copy');
+    var done = function(){ btn.textContent = '✓ COPIED'; setTimeout(function(){ btn.textContent = 'COPY LOG'; }, 1500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, function(){ fb(txt, done); });
+    else fb(txt, done);
+  };
+  function fb(txt, done){
+    var ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta);
+    ta.select(); try { document.execCommand('copy'); } catch(e){}
+    document.body.removeChild(ta); done();
+  }
+  window.clearLog = function(){
+    if (confirm('Clear the field log? (Copy it to Claude first!)')) { localStorage.removeItem(LK); renderLogBar(); }
+  };
+  document.addEventListener('click', function(ev){
+    var btn = ev.target.closest && ev.target.closest('button.lb[data-log]');
+    if (!btn) return;
+    ev.stopPropagation(); ev.preventDefault();
+    var card = btn.closest('[data-k],[data-id]');
+    var label = card ? (card.getAttribute('data-k') || card.getAttribute('data-id')) : 'unknown';
+    huntLog(label, btn.getAttribute('data-log'));
+  }, true);
+  document.addEventListener('DOMContentLoaded', renderLogBar);
+})();
+</script>
+<div id="logbar"><span id="lb-count"></span>
+  <button id="lb-copy" onclick="copyLog()">COPY LOG</button>
+  <button id="lb-clear" onclick="clearLog()">clear</button>
+  <span style="color:#aaa;margin-left:auto;font-size:12px;">covers this page AND the priced hunt list</span></div>
+
 </body>
 </html>
