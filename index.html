@@ -1893,6 +1893,18 @@ var WX = {"0":{"c":"Melbourne","sr":"06:59","ss":"17:48","du":"18:15","hi":16,"l
 // CORRECT on aeroplane mode, behind the firewall, and if github.io is blocked.
 // The live fetch is an upgrade, never a dependency: if it fails the card still
 // renders and says so out loud rather than going blank or quietly going stale.
+// WX_PREVIEW is set when the weather card is a LOOK-AHEAD rather than today.
+// Pre-trip the card renders the arrival day, which carries a decision rule about
+// checking the wall forecast the night before and the car free-cancelling only
+// until 07:00 the next morning. Rendered on 11 Aug that is simply false, and
+// paired with a live Beijing reading of 92% rain it read as "cancel the A$275
+// car tonight" nine days early. Worse,
+// it would have said TONIGHT every day for nine days, so by the one night it
+// matters the box is furniture. 15 of 27 days carry a rule, so this leaked for
+// whichever day was previewed. In-trip the rule always belongs to the day shown,
+// so nothing changes there.
+var WX_PREVIEW = null;   // null = the card is today; {n, when} = it is a preview
+
 function wxRender(n, live) {
   var w = WX[String(n)]; if (!w) return;
   var el = document.getElementById('li-wx'); if (!el) return;
@@ -1905,13 +1917,23 @@ function wxRender(n, live) {
   var src = live
     ? '<span style="color:#10b981;">● LIVE</span>'
     : '<span style="color:var(--muted);" title="No connection - these are seasonal normals and real computed sun times, not a forecast">○ OFFLINE · seasonal normals</span>';
-  var rule = w.rr
-    ? '<div style="margin-top:7px;padding:7px 9px;background:rgba(0,0,0,0.03);border-left:2px solid ' + accent + ';font-size:12px;line-height:1.45;">' + w.rr + '</div>'
-    : '';
+  var pv = (WX_PREVIEW && WX_PREVIEW.n === n) ? WX_PREVIEW : null;
+  var rule = '';
+  if (w.rr) {
+    if (pv) {
+      // Preview: keep the information, remove the false urgency. No accent bar,
+      // muted text, and an explicit stamp saying which night it belongs to.
+      rule = '<div style="margin-top:7px;padding:7px 9px;background:rgba(0,0,0,0.02);border-left:2px dotted #cbd5e1;font-size:12px;line-height:1.45;color:var(--muted);">'
+           + '<div style="font-family:\'Share Tech Mono\',monospace;font-size:9px;letter-spacing:1.5px;color:#94a3b8;margin-bottom:4px;">DAY ' + n + ' RULE \u00b7 APPLIES ' + pv.when + ' \u00b7 NOT TONIGHT</div>'
+           + w.rr + '</div>';
+    } else {
+      rule = '<div style="margin-top:7px;padding:7px 9px;background:rgba(0,0,0,0.03);border-left:2px solid ' + accent + ';font-size:12px;line-height:1.45;">' + w.rr + '</div>';
+    }
+  }
   el.innerHTML =
     '<div style="border:1px solid var(--border);border-left:3px solid ' + accent + ';background:var(--card);padding:10px 12px;">' +
       '<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;">' +
-        '<div style="font-family:\'Share Tech Mono\',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);">🌤 ' + w.c.toUpperCase() + '</div>' +
+        '<div style="font-family:\'Share Tech Mono\',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);">🌤 ' + w.c.toUpperCase() + (pv ? ' \u00b7 DAY ' + n + ' PREVIEW' : '') + '</div>' +
         '<div style="font-family:\'Share Tech Mono\',monospace;font-size:9px;letter-spacing:1px;">' + src + '</div>' +
       '</div>' +
       '<div style="margin-top:4px;font-size:15px;">' + temps +
@@ -2023,6 +2045,9 @@ function wxLive(n) {
     if (today < ITIN[0].d){
       var days = Math.ceil((new Date(ITIN[0].d+'T00:00:00Z') - now)/86400000);
       meta.textContent = 'PRE-TRIP · T-'+days+' DAYS';
+      var d1 = null;
+      ITIN.forEach(function(dd){ if (dd.n === 1) d1 = dd; });
+      WX_PREVIEW = { n: 1, when: d1 ? (d1.dow + ' ' + d1.d.slice(8) + '/' + d1.d.slice(5,7)) : 'day 1' };
       wxRender(1); wxLive(1);
       main.innerHTML = nextDeadlineBar()
         + '<div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:12px 16px;">'
@@ -2034,6 +2059,7 @@ function wxLive(n) {
       if (idx < ITIN.length - 1) h += dayCard(ITIN[idx+1],'TOMORROW',false);
       if (idx > 0)  h += dayCard(ITIN[idx-1],'YESTERDAY',false);
       main.innerHTML = h;
+      WX_PREVIEW = null;
       wxRender(ITIN[idx].n); wxLive(ITIN[idx].n);
       var ck = document.getElementById('li-clock'); if (ck) ck.textContent = hm(now);
     } else {
