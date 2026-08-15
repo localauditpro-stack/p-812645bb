@@ -811,6 +811,32 @@ footer .fr { font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--bo
   #live-itinerary table td{font-size:12.5px;}
   .cd-grid{gap:8px;}
 }
+
+/* ===== COMPACT MOBILE HERO (added 2026-08-15) =====
+   Measured on 390x844: the full hero was 368px — 44% of the first screen
+   spent on a cover page before anything usable. On a phone the trip name and
+   the date span are the only two facts worth the pixels; the tag line, the
+   subtitle route and the day counter all repeat information the LIVE
+   ITINERARY panel gives you in context. Everything stays in the DOM (display
+   :none, not removed) so the desktop layout and the consistency gate are
+   untouched. Must come AFTER the max-width:480px block above — equal
+   specificity, so source order decides. */
+@media(max-width:680px){
+  header { padding:18px 0 12px; }
+  header::after { display:none; }
+  /* wrap, don't nowrap: at 38px the title is ~250px and the date needs ~140,
+     which overflowed a 334px content box and clipped "T 2026" off the end.
+     Letting it wrap to a second line costs ~16px and cannot overflow at any
+     width, where shrinking the type to force one line was tight at 390px and
+     would have broken on a 320px screen. */
+  .header-row { align-items:baseline; flex-wrap:wrap; gap:4px 12px; }
+  h1 { font-size:38px; line-height:1; letter-spacing:1px; white-space:nowrap; }
+  h1 br { display:none; }
+  h1 span::before { content:'\00a0'; }
+  .tag-line, .subtitle, .days-big, .days-lbl { display:none; }
+  .header-meta { text-align:left; }
+  .date-tag { font-size:10px; letter-spacing:1px; }
+}
 .tx-card-badge{display:inline-block;}
 .tx-card-badge[style*="background"]{color:#fff;padding:2px 8px;border-radius:3px;}
 
@@ -1822,7 +1848,7 @@ function kitTab(t){
       </div>
       <div class="header-meta">
         <div class="date-tag">21 AUG — 15 SEPT 2026</div>
-        <div class="days-big">25</div>
+        <div class="days-big">26</div>
         <div class="days-lbl">DAY MISSION</div>
       </div>
     </div>
