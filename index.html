@@ -161,19 +161,34 @@ h1 span { color:var(--cyan); }
 .subtitle { margin-top:18px; font-family:'Share Tech Mono',monospace; font-size:12px; color:var(--muted); letter-spacing:1px; }
 .subtitle em { color:var(--cyan); font-style:normal; }
 
-/* ===== PROFILE BAR ===== */
-.profile-bar {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:1px; background:var(--border); border:1px solid var(--border); margin:28px 0;
+/* ===== FEATURE TOOLBAR =====
+   Replaced the profile bar (Travellers / Vibe / Interests / Hunt pill) and the
+   old two-line tile row on 2026-08-15. Those three pills were briefing-document
+   furniture with zero in-trip use, and the old tiles were min-width:140px with
+   flex-wrap, which on a ~390px phone meant 2-per-row: six rows of chrome before
+   TODAY was on screen. Fixed 8-up grid / 4-up on mobile = two rows total. */
+.feature-toolbar {
+  display:grid; grid-template-columns:repeat(8,1fr); gap:8px; margin:28px 0 28px;
 }
-.pi { background:var(--card); padding:14px 18px; position:relative; }
-.pi::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; }
-.pi.c1::before{background:var(--cyan);}
-.pi.c2::before{background:var(--magenta);}
-.pi.c3::before{background:var(--yellow);}
-.pi.c4::before{background:var(--green);}
-.pi .lbl { font-family:'Share Tech Mono',monospace; font-size:9px; color:var(--muted); letter-spacing:3px; text-transform:uppercase; margin-bottom:5px; }
-.pi .val { font-size:12px; color:var(--white); line-height:1.4; }
+.ftile {
+  cursor:pointer; border:1px solid var(--fc); background:var(--fb); color:var(--fc);
+  border-radius:6px; padding:11px 4px 10px; text-align:center;
+  transition:background .18s, color .18s, transform .12s;
+  -webkit-tap-highlight-color:transparent;
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+}
+.ftile .fi { font-size:18px; line-height:1; margin-bottom:6px; }
+.ftile .fl { font-family:'Share Tech Mono',monospace; font-size:9px; font-weight:700;
+  letter-spacing:1.5px; line-height:1.25; min-height:2.5em;
+  display:flex; align-items:center; justify-content:center; }
+@media(hover:hover){ .ftile:hover { background:var(--fc); color:#fff; } }
+.ftile:active { transform:scale(0.96); }
+@media(max-width:680px){
+  .feature-toolbar { grid-template-columns:repeat(4,1fr); gap:6px; margin:20px 0 22px; }
+  .ftile { padding:10px 2px 9px; }
+  .ftile .fi { font-size:17px; }
+  .ftile .fl { font-size:8px; letter-spacing:0.8px; }
+}
 
 /* ===== SECTION HEADER ===== */
 .sec-hdr { display:flex; align-items:center; gap:14px; margin:48px 0 20px; }
@@ -794,7 +809,6 @@ footer .fr { font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--bo
   #ticket-modal > div, #budget-modal > div{margin:3vh 10px;padding:16px 14px;}
   #booked-flights{padding:12px 12px;}
   #live-itinerary table td{font-size:12.5px;}
-  .feature-pill-btn{min-width:120px;}
   .cd-grid{gap:8px;}
 }
 .tx-card-badge{display:inline-block;}
@@ -822,7 +836,10 @@ footer .fr { font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--bo
         <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#1e293b;letter-spacing:3px;line-height:1;">🎴 POKÉMON HUNT LIST</div>
         <div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px;">BOOSTER BOXES + CHASE CARDS · CN EXCLUSIVE TARGETS</div>
       </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end;">
+      <a href="hunt-list.html" target="_blank" style="background:rgba(200,52,44,0.06);border:1px solid rgba(200,52,44,0.3);color:#c8342c;font-family:'Share Tech Mono',monospace;font-size:12px;padding:10px 16px;letter-spacing:2px;text-decoration:none;white-space:nowrap;">🃏 PRICED LIST + IMAGES →</a>
       <button onclick="closeHuntOverlay()" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.25);color:#ef4444;font-family:'Share Tech Mono',monospace;font-size:13px;padding:10px 20px;cursor:pointer;letter-spacing:2px;">✕ CLOSE</button>
+      </div>
     </div>
     <div style="background:#fffbeb;border:1px solid rgba(217,119,6,0.25);border-left:3px solid #d97706;padding:10px 14px;margin-bottom:18px;font-size:12px;line-height:1.5;color:#4a5568;">
       <strong style="font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:#d97706;">⚠ CARD ART NOTE</strong><br>
@@ -1002,7 +1019,7 @@ footer .fr { font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--bo
   </div>
 </div>
 <script>
-function openKitOverlay(){document.getElementById('kit-overlay').style.display='block';document.body.style.overflow='hidden';}
+function openKitOverlay(tab){document.getElementById('kit-overlay').style.display='block';document.body.style.overflow='hidden';if(tab)kitTab(tab);}
 function closeKitOverlay(){document.getElementById('kit-overlay').style.display='none';document.body.style.overflow='';}
 function kitTab(t){
   ['pack','phrase','taxi'].forEach(function(k){
@@ -1367,6 +1384,90 @@ function kitTab(t){
 <div class="tx-card-note" style="margin:0 0 8px;background:#f0fdf4;border-color:#bbf7d0;"><b>✓ WALK IN / ✗ WALK OUT.</b> Good: bright white light, glass frontage you can see into, printed menu with times and prices, staff in flat shoes and plain uniform, open recliner area, licence on the wall, inside a mall or a busy main street. Bad: pink or red lobby lighting, frosted or blacked-out windows, buzzer entry, no visible prices, coded or euphemistic menu items, staff presented to you by photo or appearance, curtained rooms with no window in the door, open till 3–5am with a dead daytime. <b>If it feels wrong, leave before anything starts</b> — say <b>不好意思，我改变主意了</b> (bù hǎoyìsi, wǒ gǎibiàn zhǔyì le) and walk. You owe nothing and nobody will make a scene. Both buyer and seller are penalised under Chinese law and a foreigner also risks deportation and a re-entry ban — so the checklist is not squeamishness, it is the whole point.</div>
 <div class="tx-card-note" style="margin:0;"><b>Say it:</b> 我要推拿 <i>wǒ yào tuīná</i> (body) · 我要足疗 <i>wǒ yào zúliáo</i> (feet) · 重一点 <i>zhòng yīdiǎn</i> (harder) · 轻一点 <i>qīng yīdiǎn</i> (lighter) · 太疼了 <i>tài téng le</i> (too painful) · 重点按我的腿 <i>zhòngdiǎn àn wǒ de tuǐ</i> (focus on my legs) · 不要精油 <i>búyao jīngyóu</i> (no oil) · 多少钱 <i>duōshao qián</i> (how much)</div></div>
 
+<div class="tx-card"><div class="tx-card-badge" id="tx-gym">🏋 GYM — 3×/WEEK · 30 MIN · NO LEG DAY</div>
+<div class="tx-card-note" style="margin:0 0 8px;background:#f0f9ff;border-color:#bae6fd;">
+  <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:1.5px;color:#0369a1;">NEXT UP</div>
+  <div id="gymNext" style="font-size:20px;font-weight:700;color:#0c4a6e;margin:2px 0 6px;">PULL</div>
+  <div id="gymLast" style="font-size:12px;color:var(--muted);margin-bottom:9px;">Nothing logged yet.</div>
+  <div style="display:flex;gap:7px;flex-wrap:wrap;">
+    <button class="gymbtn" data-gym="PULL" type="button">✓ DID PULL</button>
+    <button class="gymbtn" data-gym="PUSH" type="button">✓ DID PUSH</button>
+    <button class="gymbtn" data-gym="SWIM" type="button">🏊 SWAM</button>
+    <button class="gymbtn" data-gym="UNDO" type="button" style="margin-left:auto;opacity:0.6;">↺ undo</button>
+  </div>
+</div>
+<div class="tx-card-note" style="margin:0 0 8px;"><b>How to use this:</b> take the <b>leftmost option you can actually see in the room</b> — that is the whole system. Hotel gyms vary from a cable stack to three dumbbells, so nothing here names a machine you might not have. Superset <b>1+2</b> and <b>3+4</b>; that is what makes 30 minutes work rather than 50.</div>
+<div class="tx-card-note" style="margin:0 0 8px;"><b>🟦 PULL — twice a week.</b> Biased this way on purpose: 26 days of backpack, camera strap and suitcase pulls you forward, and pulling is the direct antidote.<br>
+1 · <b>VERTICAL PULL</b> — lat pulldown › assisted pull-up › band pulldown › DB pullover — <b>3 × 8–12</b><br>
+2 · <b>HORIZONTAL PULL</b> — seated row › chest-supported DB row › single-arm DB row › band row — <b>3 × 8–12</b><br>
+3 · <b>REAR DELT</b> — face pull › reverse pec-dec › DB reverse fly › band pull-apart — <b>3 × 15</b><br>
+4 · <b>BICEPS</b> — cable curl › DB curl › band curl — <b>2 × 12</b><br>
+5 · <b>CORE</b> — hanging knee raise › cable crunch › side plank — <b>2 sets</b></div>
+<div class="tx-card-note" style="margin:0 0 8px;"><b>🟧 PUSH — once a week.</b><br>
+1 · <b>HORIZONTAL PUSH</b> — DB bench › machine chest press › feet-elevated push-up — <b>3 × 8–12</b><br>
+2 · <b>HIP HINGE</b> — DB RDL › hip thrust › single-leg RDL — <b>2 × 10</b> — ⚠ the only leg movement here, and it earns its place: hamstrings and glutes are what protect your knees on the descents, and walking does not train them<br>
+3 · <b>VERTICAL PUSH</b> — DB shoulder press › machine press › pike push-up — <b>3 × 8–12</b><br>
+4 · <b>LATERAL RAISE</b> — DB › cable › band — <b>3 × 15</b><br>
+5 · <b>TRICEPS</b> — cable pushdown › overhead DB extension › bench dip — <b>2 × 15</b></div>
+<div class="tx-card-note" style="margin:0 0 8px;background:#fffbeb;border-color:rgba(217,119,6,0.3);"><b>⚠ FOUR RULES</b><br>
+· <b>Stop two reps short of failure.</b> You are on six hours sleep and 20k steps — training to failure into that is a net loss.<br>
+· <b>Nothing in the 48h before Jinshanling (D2), Tianmen (D12) or Yuanjiajie (D13).</b> Sore legs on those days cost you the thing you flew here for.<br>
+· <b>Mountain days: SWIM instead.</b> Pullman, HUALUXE and the Chengdu Holiday Inn all have pools. After a descent day that is restorative where lifting is additive.<br>
+· <b>This yields to the itinerary, always.</b> Maintenance needs about a third of your normal volume — missing two sessions costs you nothing.</div>
+<div class="tx-card-note" style="margin:0;"><b>🕐 GYM HOURS BY HOTEL</b> — verified 15 Aug<br>
+<b>Beijing</b> UrCove — <b>24 hours</b> · <b>Xi’an</b> UrCove — gym confirmed, hours unpublished, ask at check-in (+86 29 8735 7777)<br>
+<b>Chengdu</b> Holiday Inn — gym + <b>indoor heated pool</b>, hours unpublished (+86 28 6130 6688) · <b>Chongqing</b> Mercure — <b>24 hours</b>, no pool<br>
+<b>Zhangjiajie</b> Pullman — <b>24/7</b> + pool + spa (20 massage rooms) · <b>Shanghai</b> HUALUXE — gym + pool + sauna, hours unpublished (+86 21 3338 3888) — ⚠ <b>ask at check-in on Sep 4</b>, this is where most sessions land<br>
+<b>Hong Kong</b> Hopewell — <b>05:00–24:00</b>, strength + cardio, towels and lockers provided, sauna 07:00–21:00</div></div>
+
+<style>
+.gymbtn{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:1px;background:var(--card);color:var(--text);border:1px solid var(--border2);border-radius:6px;padding:8px 12px;cursor:pointer;}
+.gymbtn:hover{border-color:#0369a1;color:#0369a1;}
+</style>
+<script>
+(function(){
+  var KEY = 'chinaTrip_gym';
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(e){ return []; } }
+  function save(a){ try { localStorage.setItem(KEY, JSON.stringify(a)); } catch(e){} }
+  function daysAgo(iso){
+    var d = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
+    return d <= 0 ? 'today' : (d === 1 ? 'yesterday' : d + ' days ago');
+  }
+  // 2 PULL : 1 PUSH. Swims do not affect the lifting rotation.
+  function nextUp(log){
+    var lifts = log.filter(function(e){ return e.t === 'PULL' || e.t === 'PUSH'; })
+                   .slice().reverse().map(function(e){ return e.t; });
+    if (!lifts.length) return 'PULL';
+    if (lifts[0] === 'PUSH') return 'PULL';
+    if (lifts[0] === 'PULL' && lifts[1] === 'PULL') return 'PUSH';
+    return 'PULL';
+  }
+  function render(){
+    var log = load();
+    var n = document.getElementById('gymNext'), l = document.getElementById('gymLast');
+    if (!n || !l) return;
+    n.textContent = nextUp(log);
+    if (!log.length) { l.textContent = 'Nothing logged yet.'; return; }
+    var last = log[log.length - 1];
+    var lifts = log.filter(function(e){ return e.t !== 'SWIM'; }).length;
+    var swims = log.length - lifts;
+    l.textContent = 'Last: ' + last.t + ', ' + daysAgo(last.d) + ' \u00b7 ' +
+      lifts + ' session' + (lifts === 1 ? '' : 's') + (swims ? ' + ' + swims + ' swim' + (swims === 1 ? '' : 's') : '') + ' logged';
+  }
+  document.addEventListener('click', function(ev){
+    var b = ev.target.closest && ev.target.closest('button.gymbtn');
+    if (!b) return;
+    ev.preventDefault();
+    var what = b.getAttribute('data-gym'), log = load();
+    if (what === 'UNDO') { log.pop(); }
+    else { log.push({ d: new Date().toISOString(), t: what }); }
+    save(log); render();
+  }, true);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', render);
+  } else { render(); }
+})();
+</script>
 <div class="tx-card"><div class="tx-card-badge" id="tx-scams">🎭 SCAMS ON THIS EXACT ROUTE</div>
 <div class="tx-card-note" style="margin:0 0 8px;"><b>The teahouse/"art student" scam is ACTIVE on your route:</b> Wangfujing + Forbidden City exits + Houhai (Beijing), East Nanjing Rd + the Bund + Yu Garden (Shanghai), Muslim Quarter + Bell Tower (Xi'an). Friendly English-speakers invite you for tea/a gallery → the bill is US$1,000+. <b>One rule beats them all: never go to a venue chosen by someone who approached YOU.</b> Meeting people is half this trip — invite them to a place YOU pick instead; genuine people say yes.</div>
 <div class="tx-card-note" style="margin:0;"><b>Also live:</b> taxi touts inside arrivals halls (2–3× price, use DiDi or the official rank) · hutong pedicab price-switch (agree ¥30, demanded ¥300 — photo the agreed price) · <b>HK:</b> Wan Chai/LKF "lady drink" bars (HK$3,000 bills — check prices before ordering anywhere with hostesses), TST tailor touts, fake monks with beads (TST/Mong Kok), money-changer short-counts — count at the window, or just use ATMs.</div></div>
@@ -1727,47 +1828,16 @@ function kitTab(t){
     </div>
   </header>
 
-  <div class="profile-bar">
-    <div class="pi c1"><div class="lbl">Travellers</div><div class="val">DK (32) & Cousin (36) · Melbourne</div></div>
-    <div class="pi c2"><div class="lbl">Vibe</div><div class="val">Comfort-Independent · No tours</div></div>
-    <div class="pi c3"><div class="lbl">Interests</div><div class="val">Architecture · Photography · Pokémon TCG · Nightlife</div></div>
-    <div class="pi c4" id="hunt-pill-btn" onclick="openHuntOverlay()" style="cursor:pointer;border:1px solid rgba(16,185,129,0.35);background:rgba(16,185,129,0.04);transition:all 0.2s;" onmouseover="this.style.background='rgba(16,185,129,0.1)'" onmouseout="this.style.background='rgba(16,185,129,0.04)'"><div class="lbl" style="color:#10b981;">🎴 HUNT LIST</div><div class="val" style="color:#10b981;font-weight:700;letter-spacing:1px;">VIEW BOXES & CHASE CARDS →</div></div>
-  </div>
-
   <!-- ===== FEATURE TOOLBAR ===== -->
-  <div class="feature-toolbar" style="display:flex;gap:10px;flex-wrap:wrap;margin:0 0 28px 0;">
-    <div class="feature-pill-btn" onclick="window.open('hunt-list.html','_blank')" style="cursor:pointer;border:1px solid rgba(200,52,44,0.5);background:rgba(200,52,44,0.07);transition:all 0.2s;padding:10px 18px;border-radius:6px;flex:1;min-width:140px;text-align:center;" onmouseover="this.style.background='rgba(200,52,44,0.14)'" onmouseout="this.style.background='rgba(200,52,44,0.07)'">
-      <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#c8342c;letter-spacing:3px;text-transform:uppercase;margin-bottom:5px;">🃏 PRICED HUNT LIST</div>
-      <div style="font-size:12px;color:#c8342c;font-weight:700;letter-spacing:1px;">MAX BUYS · REAL SC IMAGES →</div>
-    </div>
-    <div class="feature-pill-btn" onclick="document.getElementById('live-itinerary').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.06);transition:all 0.2s;padding:10px 18px;border-radius:6px;flex:1;min-width:140px;text-align:center;">
-      <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#059669;letter-spacing:3px;text-transform:uppercase;margin-bottom:5px;">📍 TODAY</div>
-      <div style="font-size:12px;color:#059669;font-weight:700;letter-spacing:1px;">LIVE ITINERARY →</div>
-    </div>
-    <div class="feature-pill-btn" onclick="document.getElementById('hotel-cards').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;border:1px solid rgba(202,138,4,0.4);background:rgba(202,138,4,0.06);transition:all 0.2s;padding:10px 18px;border-radius:6px;flex:1;min-width:140px;text-align:center;">
-      <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#854f0b;letter-spacing:3px;text-transform:uppercase;margin-bottom:5px;">🏨 HOTELS</div>
-      <div style="font-size:12px;color:#854f0b;font-weight:700;letter-spacing:1px;">7/7 BOOKED · CHECK-IN CARDS →</div>
-    </div>
-    <div class="feature-pill-btn" onclick="document.getElementById('phase-map').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;border:1px solid rgba(37,99,235,0.35);background:rgba(37,99,235,0.04);transition:all 0.2s;padding:10px 18px;border-radius:6px;flex:1;min-width:140px;text-align:center;" onmouseover="this.style.background='rgba(37,99,235,0.1)'" onmouseout="this.style.background='rgba(37,99,235,0.04)'">
-      <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--cyan);letter-spacing:3px;text-transform:uppercase;margin-bottom:5px;">🗺 PHASE MAP</div>
-      <div style="font-size:12px;color:var(--cyan);font-weight:700;letter-spacing:1px;">7 PHASES · WHERE YOU ARE →</div>
-    </div>
-    <div class="feature-pill-btn" onclick="document.getElementById('transit-reference').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;border:1px solid rgba(37,99,235,0.35);background:rgba(37,99,235,0.04);transition:all 0.2s;padding:10px 18px;border-radius:6px;flex:1;min-width:140px;text-align:center;" onmouseover="this.style.background='rgba(37,99,235,0.1)'" onmouseout="this.style.background='rgba(37,99,235,0.04)'">
-      <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--cyan);letter-spacing:3px;text-transform:uppercase;margin-bottom:5px;">🚇 METRO GUIDE</div>
-      <div style="font-size:12px;color:var(--cyan);font-weight:700;letter-spacing:1px;">TRANSIT REF →</div>
-    </div>
-    <div class="feature-pill-btn" onclick="document.getElementById('expense-tracker').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;border:1px solid rgba(37,99,235,0.35);background:rgba(37,99,235,0.04);transition:all 0.2s;padding:10px 18px;border-radius:6px;flex:1;min-width:140px;text-align:center;" onmouseover="this.style.background='rgba(37,99,235,0.1)'" onmouseout="this.style.background='rgba(37,99,235,0.04)'">
-      <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--cyan);letter-spacing:3px;text-transform:uppercase;margin-bottom:5px;">💰 EXPENSES</div>
-      <div style="font-size:12px;color:var(--cyan);font-weight:700;letter-spacing:1px;">TRACK SPEND →</div>
-    </div>
-    <div class="feature-pill-btn" onclick="openKitOverlay()" style="cursor:pointer;border:1px solid rgba(139,92,246,0.35);background:rgba(139,92,246,0.04);transition:all 0.2s;padding:10px 18px;border-radius:6px;flex:1;min-width:140px;text-align:center;" onmouseover="this.style.background='rgba(139,92,246,0.1)'" onmouseout="this.style.background='rgba(139,92,246,0.04)'">
-      <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#8b5cf6;letter-spacing:3px;text-transform:uppercase;margin-bottom:5px;">🧳 TRAVEL KIT</div>
-      <div style="font-size:12px;color:#8b5cf6;font-weight:700;letter-spacing:1px;">PACKING · PHRASES · TAXI →</div>
-    </div>
-    <div class="feature-pill-btn" onclick="openBoardsOverlay()" style="cursor:pointer;border:1px solid rgba(217,119,6,0.35);background:rgba(217,119,6,0.04);transition:all 0.2s;padding:10px 18px;border-radius:6px;flex:1;min-width:140px;text-align:center;" onmouseover="this.style.background='rgba(217,119,6,0.1)'" onmouseout="this.style.background='rgba(217,119,6,0.04)'">
-      <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#d97706;letter-spacing:3px;text-transform:uppercase;margin-bottom:5px;">🗺 CITY BOARDS</div>
-      <div style="font-size:12px;color:#d97706;font-weight:700;letter-spacing:1px;">7 STOPS AT A GLANCE →</div>
-    </div>
+  <div class="feature-toolbar">
+    <div class="ftile" style="--fc:#059669;--fb:rgba(5,150,105,0.06);" onclick="document.getElementById('live-itinerary').scrollIntoView({behavior:'smooth'})"><span class="fi">📍</span><span class="fl">TODAY</span></div>
+    <div class="ftile" style="--fc:#854f0b;--fb:rgba(202,138,4,0.06);" onclick="document.getElementById('hotel-cards').scrollIntoView({behavior:'smooth'})"><span class="fi">🏨</span><span class="fl">HOTELS</span></div>
+    <div class="ftile" style="--fc:#2563eb;--fb:rgba(37,99,235,0.05);" onclick="document.getElementById('transit-reference').scrollIntoView({behavior:'smooth'})"><span class="fi">🚇</span><span class="fl">METRO</span></div>
+    <div class="ftile" style="--fc:#0f766e;--fb:rgba(15,118,110,0.06);" onclick="document.getElementById('expense-tracker').scrollIntoView({behavior:'smooth'})"><span class="fi">💰</span><span class="fl">EXPENSES</span></div>
+    <div class="ftile" style="--fc:#be185d;--fb:rgba(190,24,93,0.05);" onclick="openXCard('tx-gym')"><span class="fi">🏋</span><span class="fl">GYM</span></div>
+    <div class="ftile" style="--fc:#8b5cf6;--fb:rgba(139,92,246,0.05);" onclick="openKitOverlay('phrase')"><span class="fi">🗣</span><span class="fl">PHRASES<br>· TAXI</span></div>
+    <div class="ftile" style="--fc:#c8342c;--fb:rgba(200,52,44,0.06);" onclick="openHuntOverlay()"><span class="fi">🎴</span><span class="fl">HUNT<br>LIST</span></div>
+    <div class="ftile" style="--fc:#d97706;--fb:rgba(217,119,6,0.05);" onclick="openBoardsOverlay()"><span class="fi">🗺</span><span class="fl">CITY<br>BOARDS</span></div>
   </div>
 
 <!-- ============================================================
@@ -2018,8 +2088,15 @@ function wxLive(n) {
     }).join('');
   }
 
+  // Days where a 30-min session genuinely fits: an arrival afternoon, the Chongqing
+// sleep-in, and the Shanghai/HK blocks. Deliberately NOT the dawn starts or the
+// three mountain days - see the four rules on the gym card.
+var GYM_DAYS = [6, 10, 11, 16, 18, 20, 24];
   function dayCard(day, label, accent){
     var wake = day.wake ? '<span class="lv-wake">⏰ '+day.wake+'</span>' : '';
+    if (GYM_DAYS.indexOf(day.n) !== -1) {
+      wake += '<span class="lk lv-wake" data-x="tx-gym" style="cursor:pointer;background:#f0f9ff;color:#0369a1;border-color:#bae6fd;">🏋 gym window</span>';
+    }
     if (accent){
       return '<div class="lv-card lv-card-today">'
         + '<div class="lv-head">'
@@ -2093,6 +2170,7 @@ function wxLive(n) {
         + '<span class="lv-sidekicker">'+dd.dow.toUpperCase()+' '+dd.d.slice(5).replace('-','/')+'</span>'
         + '<span class="lv-sidetitle"><b>'+dd.city+'</b> — '+dd.title+'</span>'
         + (dd.wake?'<span class="lv-wake">⏰ '+dd.wake+'</span>':'')
+        + (GYM_DAYS.indexOf(dd.n) !== -1 ? '<span class="lk lv-wake" data-x="tx-gym" style="cursor:pointer;background:#f0f9ff;color:#0369a1;border-color:#bae6fd;">🏋 gym</span>' : '')
         + '</summary><div class="lv-blocks lv-blocks-side">'+blockRows(dd, hm(cn()), dd.d===today)+'</div></details>';
     }).join('');
   }
@@ -6642,15 +6720,22 @@ document.addEventListener('click', function(e){
     openCity(parts[0], {stopPropagation:function(){}});
     if (parts[1]) { setTimeout(function(){ switchCat(parts[0], parts[1]); }, 60); }
     return; }
-  if (t.dataset.x) { const el=document.getElementById(t.dataset.x);
-    if(!el) return;
-    const ov=document.getElementById('transport-overlay');
-    const card=el.closest('.tx-card')||el;
-    const go=function(){ txRevealPaneFor(card); card.scrollIntoView({behavior:'smooth',block:'center'});
-      card.classList.add('tx-flash'); setTimeout(function(){card.classList.remove('tx-flash');},3000); };
-    if (ov && ov.contains(el) && ov.style.display==='none') { openTransportOverlay(); setTimeout(go, 350); }
-    else { go(); } }
+  if (t.dataset.x) { openXCard(t.dataset.x); return; }
 });
+
+// Pulled out of the click delegation 2026-08-15 so the GYM toolbar tile can reach
+// tx-gym directly. Same behaviour as a data-x link: open the transport overlay
+// first if the card lives inside it, then scroll + flash.
+function openXCard(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  const ov=document.getElementById('transport-overlay');
+  const card=el.closest('.tx-card')||el;
+  const go=function(){ txRevealPaneFor(card); card.scrollIntoView({behavior:'smooth',block:'center'});
+    card.classList.add('tx-flash'); setTimeout(function(){card.classList.remove('tx-flash');},3000); };
+  if (ov && ov.contains(el) && ov.style.display==='none') { openTransportOverlay(); setTimeout(go, 350); }
+  else { go(); }
+}
 function openCity(cityKey, evt) {
   const city = CITIES[cityKey];
   if (!city) return;
