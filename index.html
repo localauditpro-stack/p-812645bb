@@ -29,6 +29,7 @@
 .lv-headright{margin-left:auto;display:flex;flex-direction:column;gap:4px;align-items:flex-end;flex:none}
 .lv-clockpill{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cyan);background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.2);border-radius:999px;padding:3px 9px;white-space:nowrap}
 .lv-wake{font-family:'Share Tech Mono',monospace;font-size:9px;color:#ef4444;background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.2);border-radius:999px;padding:2px 8px;white-space:nowrap}
+.lv-gym{font-family:'Share Tech Mono',monospace;font-size:9px;color:#0369a1;background:#f0f9ff;border:1px solid #bae6fd;border-radius:999px;padding:2px 8px;white-space:nowrap;cursor:pointer}
 .lv-blocks{padding:6px 14px 10px}
 .lv-blocks-side{padding:8px 14px 10px}
 .lv-row{display:flex;align-items:flex-start}
@@ -2127,7 +2128,7 @@ var GYM_DAYS = [6, 10, 11, 16, 18, 20, 24];
   function dayCard(day, label, accent){
     var wake = day.wake ? '<span class="lv-wake">⏰ '+day.wake+'</span>' : '';
     if (GYM_DAYS.indexOf(day.n) !== -1) {
-      wake += '<span class="lk lv-wake" data-x="tx-gym" style="cursor:pointer;background:#f0f9ff;color:#0369a1;border-color:#bae6fd;">🏋 gym window</span>';
+      wake += '<span class="lk lv-gym" data-x="tx-gym">🏋 gym window</span>';
     }
     if (accent){
       return '<div class="lv-card lv-card-today">'
@@ -2202,7 +2203,7 @@ var GYM_DAYS = [6, 10, 11, 16, 18, 20, 24];
         + '<span class="lv-sidekicker">'+dd.dow.toUpperCase()+' '+dd.d.slice(5).replace('-','/')+'</span>'
         + '<span class="lv-sidetitle"><b>'+dd.city+'</b> — '+dd.title+'</span>'
         + (dd.wake?'<span class="lv-wake">⏰ '+dd.wake+'</span>':'')
-        + (GYM_DAYS.indexOf(dd.n) !== -1 ? '<span class="lk lv-wake" data-x="tx-gym" style="cursor:pointer;background:#f0f9ff;color:#0369a1;border-color:#bae6fd;">🏋 gym</span>' : '')
+        + (GYM_DAYS.indexOf(dd.n) !== -1 ? '<span class="lk lv-gym" data-x="tx-gym">🏋 gym</span>' : '')
         + '</summary><div class="lv-blocks lv-blocks-side">'+blockRows(dd, hm(cn()), dd.d===today)+'</div></details>';
     }).join('');
   }
@@ -2840,7 +2841,7 @@ var GYM_DAYS = [6, 10, 11, 16, 18, 20, 24];
     { booked: true,  icon: '✅', route: 'SHA → HKG',           detail: 'Hong Kong Airlines HX247 · 4:55pm Sep 11', tag: 'BOOKED', cls: 'cd-tag-booked' },
     { booked: true,  icon: '✅', route: 'HKG → MEL',           detail: 'Cathay Pacific CX105',        tag: 'BOOKED', cls: 'cd-tag-booked' },
     { booked: false, icon: '⬜', route: 'Cathay seat selection ×3 legs', detail: 'CX178 / CX316 / CX105 all show SEATS: TBD on the issued ticket · pick at cathaypacific.com using AIRLINE REF EY••U8 (the BYOjet ref BYO••••9901 will not work there) · free window varies by fare, so do it now — otherwise you are split up on a 9h overnight and a 9h redeye', tag: 'DO NOW', cls: 'cd-tag-urgent' },
-    { booked: false, icon: '⬜', route: 'Chengdu cooking class — Viator', detail: 'FOR Thu Aug 27 09:00 · reserve-now-pay-later, ~A$259 for 2, wet-market tour + 3 dishes, pickup Holiday Inn lobby · ⚠ NOT BOOKED — book it by the night of Aug 26 at the latest', tag: 'OVERDUE', cls: 'cd-tag-urgent' },
+    { booked: false, icon: '⬜', route: 'Chengdu cooking class — Viator', detail: 'FOR Thu Aug 27 09:00 · <b>reserve-now-pay-later, so holding it costs nothing</b> — ~A$259 for 2, wet-market tour + 3 dishes, pickup Holiday Inn lobby · hard deadline is the night of <b>Aug 26</b>, but there is no reason to wait: booking now is free and cancellable', tag: 'DO NOW', cls: 'cd-tag-urgent' },
     { booked: false, icon: '⬜', route: 'Tianmen Mountain — timed slot (real-name)', detail: 'Visit Tue Sep 1 · ¥285 · slot 10:30–11:00 (G3869 lands 09:41) · Trip.com or WeChat 张家界天门山 · ⚠ CORRECTED 14 Aug: take LINE A, NOT line C. All three lines cost the same ¥285 and line C skips the grand cableway entirely · ⚠ tested 12 Aug, not purchasable 20 days out — alarm moved to Aug 26 with a hard backstop Aug 30 (bundles must be bought by 16:59 Aug 31)', tag: 'BOOK AUG 26', cls: 'cd-tag-pending', opens: '2026-08-26T01:30:00Z' },
     { booked: false, icon: '⬜', route: 'Wulingyuan 4-day park pass', detail: 'Covers Sep 2–4 · ¥239 (not 228 — corrected 14 Aug), includes eco-shuttle + insurance · valid 4 DAYS FROM THE SELECTED DATE, so dated Sep 2 it runs to Sep 5 · EAST GATE = Wulingyuan Sign Gate 标志门, ~10 min from the Pullman · Trip.com or WeChat 张家界旅游小助手, real-name, FACE RECOGNITION at the gate · 🔲 unresolved: whether a fresh daily slot is needed — the Aug 27 alarm is tasked with settling it', tag: 'BUY AUG 27', cls: 'cd-tag-pending', opens: '2026-08-27T13:00:00Z' },
     { booked: false, icon: '⬜', route: 'Hong Kong junk boat (Sat Sep 12)', detail: 'NOT booked and cannot be booked yet — listings open 2–4 weeks out on Meetup “DJunk Hong Kong” / LETS Events HK. Watch alarms are set. ⚠ If nothing lands, the day becomes Sai Kung beach + seafood (MTR Choi Hung C2 → green minibus 1A)', tag: 'WATCHING', cls: 'cd-tag-pending' },
