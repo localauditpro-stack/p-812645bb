@@ -166,9 +166,12 @@ h1 span { color:var(--cyan); }
    old two-line tile row on 2026-08-15. Those three pills were briefing-document
    furniture with zero in-trip use, and the old tiles were min-width:140px with
    flex-wrap, which on a ~390px phone meant 2-per-row: six rows of chrome before
-   TODAY was on screen. Fixed 8-up grid / 4-up on mobile = two rows total. */
+   TODAY was on screen. Fixed 10-up grid / 5-up on mobile = two rows total.
+   FLIGHTS and LOGISTICS added 15 Aug: #booked-flights had NO inbound link
+   anywhere in the file, and the 29-card logistics overlay had exactly one
+   (a button buried in the BOOKINGS section). Both were scroll-only. */
 .feature-toolbar {
-  display:grid; grid-template-columns:repeat(8,1fr); gap:8px; margin:28px 0 28px;
+  display:grid; grid-template-columns:repeat(10,1fr); gap:7px; margin:28px 0 28px;
 }
 .ftile {
   cursor:pointer; border:1px solid var(--fc); background:var(--fb); color:var(--fc);
@@ -184,10 +187,10 @@ h1 span { color:var(--cyan); }
 @media(hover:hover){ .ftile:hover { background:var(--fc); color:#fff; } }
 .ftile:active { transform:scale(0.96); }
 @media(max-width:680px){
-  .feature-toolbar { grid-template-columns:repeat(4,1fr); gap:6px; margin:20px 0 22px; }
-  .ftile { padding:10px 2px 9px; }
+  .feature-toolbar { grid-template-columns:repeat(5,1fr); gap:5px; margin:20px 0 22px; }
+  .ftile { padding:9px 1px 8px; }
   .ftile .fi { font-size:17px; }
-  .ftile .fl { font-size:8px; letter-spacing:0.8px; }
+  .ftile .fl { font-size:7.5px; letter-spacing:0.2px; }
 }
 
 /* ===== SECTION HEADER ===== */
@@ -1857,9 +1860,11 @@ function kitTab(t){
   <!-- ===== FEATURE TOOLBAR ===== -->
   <div class="feature-toolbar">
     <div class="ftile" style="--fc:#059669;--fb:rgba(5,150,105,0.06);" onclick="document.getElementById('live-itinerary').scrollIntoView({behavior:'smooth'})"><span class="fi">📍</span><span class="fl">TODAY</span></div>
+    <div class="ftile" style="--fc:#4338ca;--fb:rgba(67,56,202,0.05);" onclick="openFlights()"><span class="fi">✈</span><span class="fl">FLIGHTS</span></div>
     <div class="ftile" style="--fc:#854f0b;--fb:rgba(202,138,4,0.06);" onclick="document.getElementById('hotel-cards').scrollIntoView({behavior:'smooth'})"><span class="fi">🏨</span><span class="fl">HOTELS</span></div>
     <div class="ftile" style="--fc:#2563eb;--fb:rgba(37,99,235,0.05);" onclick="document.getElementById('transit-reference').scrollIntoView({behavior:'smooth'})"><span class="fi">🚇</span><span class="fl">METRO</span></div>
     <div class="ftile" style="--fc:#0f766e;--fb:rgba(15,118,110,0.06);" onclick="document.getElementById('expense-tracker').scrollIntoView({behavior:'smooth'})"><span class="fi">💰</span><span class="fl">EXPENSES</span></div>
+    <div class="ftile" style="--fc:#475569;--fb:rgba(71,85,105,0.06);" onclick="openTransportOverlay()"><span class="fi">🧭</span><span class="fl">LOGISTICS</span></div>
     <div class="ftile" style="--fc:#be185d;--fb:rgba(190,24,93,0.05);" onclick="openXCard('tx-gym')"><span class="fi">🏋</span><span class="fl">GYM</span></div>
     <div class="ftile" style="--fc:#8b5cf6;--fb:rgba(139,92,246,0.05);" onclick="openKitOverlay('phrase')"><span class="fi">🗣</span><span class="fl">PHRASES<br>· TAXI</span></div>
     <div class="ftile" style="--fc:#c8342c;--fb:rgba(200,52,44,0.06);" onclick="openHuntOverlay()"><span class="fi">🎴</span><span class="fl">HUNT<br>LIST</span></div>
@@ -2301,12 +2306,12 @@ var GYM_DAYS = [6, 10, 11, 16, 18, 20, 24];
     <div data-ticket="cx178" onclick="showTicket('cx178')" style="background:var(--card);border:1px solid var(--border);border-left:3px solid #10b981;border-radius:4px;padding:10px 12px;cursor:pointer;" title="Tap to view tickets">
       <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#059669;letter-spacing:2px;margin-bottom:4px;">CX178 · THU AUG 20 · MELBOURNE → HONG KONG</div>
       <div style="font-size:15px;font-weight:700;color:var(--text);">MEL 11:45pm → HKG 6:55am<span style="font-size:10px;color:var(--muted);"> +1</span></div>
-      <div style="font-size:11px;color:var(--muted);margin-top:3px;">9h 10m · 777-300ER · then 1h 15m layover</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px;">9h 10m · 777-300ER · then 1h 15m layover</div><div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#c8342c;margin-top:4px;letter-spacing:1px;">⚠ SEATS TBD — PICK WITH REF EY••U8</div>
     </div>
     <div data-ticket="cx316" onclick="showTicket('cx316')" style="background:var(--card);border:1px solid var(--border);border-left:3px solid #10b981;border-radius:4px;padding:10px 12px;cursor:pointer;" title="Tap to view tickets">
       <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#059669;letter-spacing:2px;margin-bottom:4px;">CX316 · FRI AUG 21 · HONG KONG → SHANGHAI</div>
       <div style="font-size:15px;font-weight:700;color:var(--text);">HKG 8:10am → PVG 11:05am</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:3px;">2h 55m · 777-300ER · immigration + bags at PVG</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px;">2h 55m · 777-300ER · immigration + bags at PVG</div><div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#c8342c;margin-top:4px;letter-spacing:1px;">⚠ SEATS TBD — PICK WITH REF EY••U8</div>
     </div>
     <div data-ticket="mu5161" onclick="showTicket('mu5161')" style="background:var(--card);border:1px solid var(--border);border-left:3px solid #10b981;border-radius:4px;padding:10px 12px;cursor:pointer;" title="Tap to view tickets">
       <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#059669;letter-spacing:2px;margin-bottom:4px;">MU5161 · FRI AUG 21 · SHANGHAI → BEIJING</div>
@@ -2326,7 +2331,7 @@ var GYM_DAYS = [6, 10, 11, 16, 18, 20, 24];
     <div data-ticket="cx105" onclick="showTicket('cx105')" style="background:var(--card);border:1px solid var(--border);border-left:3px solid #10b981;border-radius:4px;padding:10px 12px;cursor:pointer;" title="Tap to view tickets">
       <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#059669;letter-spacing:2px;margin-bottom:4px;">CX105 · TUE SEP 15 · HONG KONG → MELBOURNE</div>
       <div style="font-size:15px;font-weight:700;color:var(--text);">HKG 12:20am → MEL 11:15am</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:3px;">8h 55m · A350-900 · <strong style="color:#d97706;">departs NIGHT of Mon Sep 14 — bags in by afternoon, 22:00 Airport Express</strong></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px;">8h 55m · A350-900 · <strong style="color:#d97706;">departs NIGHT of Mon Sep 14 — bags in by afternoon, 22:00 Airport Express</strong></div><div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#c8342c;margin-top:4px;letter-spacing:1px;">⚠ SEATS TBD — PICK WITH REF EY••U8</div>
     </div>
   </div>
   <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#059669;letter-spacing:1px;margin-top:10px;">✅ ALL FLIGHTS + ALL 7 HOTELS BOOKED · ⚠ NEXT: COOKING CLASS (JUL) · JINSHANLING DRIVER · HSR + TICKET ALARMS AUG 10–18</div>
@@ -2350,19 +2355,19 @@ var GYM_DAYS = [6, 10, 11, 16, 18, 20, 24];
     {name:'KARL',dob:'—',pp:'PB•••••57',exp:'—'}
   ];
   var T={
-    cx178:{title:'CX178 — MELBOURNE → HONG KONG',carrier:'Cathay Pacific · Boeing 777-300ER · Economy',dep:'MEL Melbourne — 11:45pm Thu Aug 20',arr:'HKG Hong Kong — 6:55am Fri Aug 21 (+1)',dur:'9h 10m',bag:'23kg checked pp',ref:'BYOjet BYO••••9901 · AIRLINE REF EY••U8 (use this with Cathay) · eTicket •••••••••2468',note:'Layover 1h 15m in HKG, connects to CX316.'},
-    cx316:{title:'CX316 — HONG KONG → SHANGHAI',carrier:'Cathay Pacific · Boeing 777-300ER · Economy',dep:'HKG Hong Kong — 8:10am Fri Aug 21',arr:'PVG Shanghai Pudong — 11:05am Fri Aug 21',dur:'2h 55m',bag:'23kg checked pp',ref:'BYOjet BYO••••9901 · AIRLINE REF EY••U8 (use this with Cathay) · eTicket •••••••••2468',note:'China immigration + bag collection at PVG. Buy China Unicom SIM at arrivals, then re-check for MU5161.'},
-    mu5161:{title:'MU5161 — SHANGHAI → BEIJING',carrier:'China Eastern · Economy',dep:'PVG Shanghai Pudong — 4:25pm Fri Aug 21',arr:'PEK Beijing Capital — 6:25pm Fri Aug 21',dur:'2h',bag:'1 × 20kg checked pp (max 158cm) + 8kg carry-on + personal item — confirmed from ticket',ref:'kiss&fly DB••••RT · PNR Y0••H5 · ticket •••••••••3246 · Karl books separately (SP••••B2)',note:'Domestic hop to start the loop. Airport Express or taxi to Dongcheng.'},
-    fm7226:{title:'FM7226 — ZHANGJIAJIE → SHANGHAI',carrier:'Shanghai Airlines · Boeing 738 · Economy',dep:'DYG Zhangjiajie Hehua T2 — 1:15pm Fri Sep 4',arr:'PVG Shanghai Pudong T1 — 3:10pm Fri Sep 4',dur:'1h 55m',bag:'1 × 20kg checked pp (max 158cm) + 8kg carry-on + personal item — confirmed from ticket',ref:'kiss&fly DB••••RT · PNR 70••G4 · ticket •••••••••3110 · Karl books separately (SP••••B2)',note:'Leave Wulingyuan 09:45, straight to DYG (10:30 absolute drop-dead). Schedule re-verified Aug 2026: 1:15pm dep stands — re-check in the airline app at T-72h. Fog backup: HSR via Changsha (~2h) + Changsha→Hongqiao (~4h).'},
-    hx247:{title:'HX247 — SHANGHAI → HONG KONG',carrier:'Hong Kong Airlines · Economy',dep:'PVG Shanghai Pudong — 4:55pm Fri Sep 11',arr:'HKG Hong Kong Intl — 7:45pm Fri Sep 11',dur:'2h 50m',bag:'1 × 20kg checked pp + 7kg carry-on (confirmed from ticket) · separate bookings, no pooling · extra piece HK$960 ≈ A$171, HKA site/app only',ref:'kiss&fly DB••••RT · PNR MJ••LC · ticket MJ••LC-1 · Karl books separately (SP••••B2)',note:'International — exit China immigration. At PVG by ~2pm.'},
-    cx105:{title:'CX105 — HONG KONG → MELBOURNE',carrier:'Cathay Pacific · Airbus A350-900 · Economy',dep:'HKG Hong Kong — 12:20am Tue Sep 15 (NIGHT of Mon Sep 14)',arr:'MEL Melbourne — 11:15am Tue Sep 15',dur:'8h 55m',bag:'23kg checked pp · extra piece ~USD135 PREPAID ONLINE (USD150 at the airport) — 23–32kg overweight is a flat USD130/piece, over 32kg refused',ref:'BYOjet BYO••••9901 · AIRLINE REF EY••U8 (use this with Cathay) · eTicket •••••••••2468',note:'Bags in at in-town check-in Mon afternoon; 22:00 Airport Express, HKG ~22:25. Typhoon watch from Sep 10 — Cathay rebooks free on T8.'}
+    cx178:{title:'CX178 — MELBOURNE → HONG KONG',carrier:'Cathay Pacific · Boeing 777-300ER · Economy',seat:'⚠ <b>TBD — not assigned.</b> Pick at cathaypacific.com with AIRLINE REF EY••U8 (the BYOjet ref will not work there)',dep:'MEL Melbourne — 11:45pm Thu Aug 20',arr:'HKG Hong Kong — 6:55am Fri Aug 21 (+1)',dur:'9h 10m',bag:'23kg checked pp',ref:'BYOjet BYO••••9901 · AIRLINE REF EY••U8 (use this with Cathay) · eTicket •••••••••2468',note:'Layover 1h 15m in HKG, connects to CX316.'},
+    cx316:{title:'CX316 — HONG KONG → SHANGHAI',carrier:'Cathay Pacific · Boeing 777-300ER · Economy',seat:'⚠ <b>TBD — not assigned.</b> Pick at cathaypacific.com with AIRLINE REF EY••U8 (the BYOjet ref will not work there)',dep:'HKG Hong Kong — 8:10am Fri Aug 21',arr:'PVG Shanghai Pudong — 11:05am Fri Aug 21',dur:'2h 55m',bag:'23kg checked pp',ref:'BYOjet BYO••••9901 · AIRLINE REF EY••U8 (use this with Cathay) · eTicket •••••••••2468',note:'China immigration + bag collection at PVG. Buy China Unicom SIM at arrivals, then re-check for MU5161.'},
+    mu5161:{title:'MU5161 — SHANGHAI → BEIJING',carrier:'China Eastern · Economy',seat:'Not on the ticket — China Eastern assigns at check-in unless you pick in their app',dep:'PVG Shanghai Pudong — 4:25pm Fri Aug 21',arr:'PEK Beijing Capital — 6:25pm Fri Aug 21',dur:'2h',bag:'1 × 20kg checked pp (max 158cm) + 8kg carry-on + personal item — confirmed from ticket',ref:'kiss&fly DB••••RT · PNR Y0••H5 · ticket •••••••••3246 · Karl books separately (SP••••B2)',note:'Domestic hop to start the loop. Airport Express or taxi to Dongcheng.'},
+    fm7226:{title:'FM7226 — ZHANGJIAJIE → SHANGHAI',carrier:'Shanghai Airlines · Boeing 738 · Economy',seat:'Not on the ticket — Shanghai Airlines assigns at check-in unless you pick in their app',dep:'DYG Zhangjiajie Hehua T2 — 1:15pm Fri Sep 4',arr:'PVG Shanghai Pudong T1 — 3:10pm Fri Sep 4',dur:'1h 55m',bag:'1 × 20kg checked pp (max 158cm) + 8kg carry-on + personal item — confirmed from ticket',ref:'kiss&fly DB••••RT · PNR 70••G4 · ticket •••••••••3110 · Karl books separately (SP••••B2)',note:'Leave Wulingyuan 09:45, straight to DYG (10:30 absolute drop-dead). Schedule re-verified Aug 2026: 1:15pm dep stands — re-check in the airline app at T-72h. Fog backup: HSR via Changsha (~2h) + Changsha→Hongqiao (~4h).'},
+    hx247:{title:'HX247 — SHANGHAI → HONG KONG',carrier:'Hong Kong Airlines · Economy',seat:'Not on the ticket — Hong Kong Airlines assigns at check-in unless you pick in their app',dep:'PVG Shanghai Pudong — 4:55pm Fri Sep 11',arr:'HKG Hong Kong Intl — 7:45pm Fri Sep 11',dur:'2h 50m',bag:'1 × 20kg checked pp + 7kg carry-on (confirmed from ticket) · separate bookings, no pooling · extra piece HK$960 ≈ A$171, HKA site/app only',ref:'kiss&fly DB••••RT · PNR MJ••LC · ticket MJ••LC-1 · Karl books separately (SP••••B2)',note:'International — exit China immigration. At PVG by ~2pm.'},
+    cx105:{title:'CX105 — HONG KONG → MELBOURNE',carrier:'Cathay Pacific · Airbus A350-900 · Economy',seat:'⚠ <b>TBD — not assigned.</b> Pick at cathaypacific.com with AIRLINE REF EY••U8 (the BYOjet ref will not work there)',dep:'HKG Hong Kong — 12:20am Tue Sep 15 (NIGHT of Mon Sep 14)',arr:'MEL Melbourne — 11:15am Tue Sep 15',dur:'8h 55m',bag:'23kg checked pp · extra piece ~USD135 PREPAID ONLINE (USD150 at the airport) — 23–32kg overweight is a flat USD130/piece, over 32kg refused',ref:'BYOjet BYO••••9901 · AIRLINE REF EY••U8 (use this with Cathay) · eTicket •••••••••2468',note:'Bags in at in-town check-in Mon afternoon; 22:00 Airport Express, HKG ~22:25. Typhoon watch from Sep 10 — Cathay rebooks free on T8.'}
   };
   function row(l,v){return '<div style="display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px dashed #e2e8f0;"><span style="font-family:\'Share Tech Mono\',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);padding-top:2px;">'+l+'</span><span style="font-size:13px;color:#1e293b;text-align:right;font-weight:600;">'+v+'</span></div>';}
   window.showTicket=function(k){
     var t=T[k]; if(!t)return;
     document.getElementById('tm-title').textContent=t.title;
     var h='';
-    h+=row('DEPART',t.dep)+row('ARRIVE',t.arr)+row('DURATION',t.dur)+row('CARRIER',t.carrier)+row('BAGGAGE',t.bag)+row('BOOKING REF',t.ref);
+    h+=row('DEPART',t.dep)+row('ARRIVE',t.arr)+row('DURATION',t.dur)+row('CARRIER',t.carrier)+row('SEATS',t.seat)+row('BAGGAGE',t.bag)+row('BOOKING REF',t.ref);
     h+='<div style="font-size:12px;color:#64748b;margin:10px 0 14px;line-height:1.5;">'+t.note+'</div>';
     PAX.forEach(function(p){
       h+='<div style="background:#fff;border:1px solid var(--border);border-left:3px solid #10b981;border-radius:4px;padding:10px 14px;margin-bottom:8px;">'
@@ -6829,6 +6834,14 @@ function closePanel() {
 }
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+// The flights strip lives inside a <details>. Scrolling to a collapsed summary
+// looks like a dead tile, so the toolbar entry force-opens it first (15 Aug).
+function openFlights(){
+  var s=document.getElementById('booked-flights'); if(!s) return;
+  var d=s.querySelector('details'); if(d) d.open=true;
+  s.scrollIntoView({behavior:'smooth',block:'start'});
+}
 
 // ===== TRANSPORT OVERLAY =====
 let txMap = null;
